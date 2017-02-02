@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC4610D01E43C9560059D5CD /* PlacePredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PlacePredictionModel.swift */; };
+		AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D11E43D0980059D5CD /* PlaceModel.swift */; };
 		ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF841E3FDAA00091680B /* AppDelegate.swift */; };
 		ACFEEF871E3FDAA00091680B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF861E3FDAA00091680B /* ViewController.swift */; };
 		ACFEEF8A1E3FDAA00091680B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF881E3FDAA00091680B /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC4610CF1E43C9560059D5CD /* PlacePredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionModel.swift; sourceTree = "<group>"; };
+		AC4610D11E43D0980059D5CD /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEEF841E3FDAA00091680B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEEF861E3FDAA00091680B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 		ACFEEFB41E3FDACB0091680B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AC4610CF1E43C9560059D5CD /* PlacePredictionModel.swift */,
+				AC4610D11E43D0980059D5CD /* PlaceModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -246,6 +252,7 @@
 				TargetAttributes = {
 					ACFEEF801E3FDAA00091680B = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5A957QL4K9;
 						ProvisioningStyle = Automatic;
 					};
 					ACFEEF941E3FDAA00091680B = {
@@ -332,6 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEEF871E3FDAA00091680B /* ViewController.swift in Sources */,
+				AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */,
+				AC4610D01E43C9560059D5CD /* PlacePredictionModel.swift in Sources */,
 				ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +492,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5A957QL4K9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -501,7 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5A957QL4K9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -591,6 +600,7 @@
 				ACFEEFAB1E3FDAA00091680B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACFEEFAC1E3FDAA00091680B /* Build configuration list for PBXNativeTarget "SwiftMVVMExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +609,7 @@
 				ACFEEFAE1E3FDAA00091680B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACFEEFAF1E3FDAA00091680B /* Build configuration list for PBXNativeTarget "SwiftMVVMExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -607,6 +618,7 @@
 				ACFEEFB11E3FDAA00091680B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
