@@ -1,5 +1,5 @@
 //
-//  PlacePredictionModel.swift
+//  PredictionModel.swift
 //  SwiftMVVMExample
 //
 //  Created by Artem Mikhailov on 02/02/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlacePredictionModel {
+class PredictionModel {
     var predictionId: String
     var placeId: String
     var placeDescription: String

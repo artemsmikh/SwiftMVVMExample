@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC4610D01E43C9560059D5CD /* PlacePredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PlacePredictionModel.swift */; };
+		AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
 		AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D11E43D0980059D5CD /* PlaceModel.swift */; };
+		AC4610D41E43D5C70059D5CD /* PredictionSearchAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D31E43D5C70059D5CD /* PredictionSearchAPIModel.swift */; };
 		ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF841E3FDAA00091680B /* AppDelegate.swift */; };
 		ACFEEF871E3FDAA00091680B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF861E3FDAA00091680B /* ViewController.swift */; };
 		ACFEEF8A1E3FDAA00091680B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF881E3FDAA00091680B /* Main.storyboard */; };
@@ -37,8 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC4610CF1E43C9560059D5CD /* PlacePredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePredictionModel.swift; sourceTree = "<group>"; };
+		AC4610CF1E43C9560059D5CD /* PredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		AC4610D11E43D0980059D5CD /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		AC4610D31E43D5C70059D5CD /* PredictionSearchAPIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIModel.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEEF841E3FDAA00091680B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEEF861E3FDAA00091680B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC4610E21E4524AF0059D5CD /* Prediction */ = {
+			isa = PBXGroup;
+			children = (
+				AC4610CF1E43C9560059D5CD /* PredictionModel.swift */,
+				AC4610D31E43D5C70059D5CD /* PredictionSearchAPIModel.swift */,
+			);
+			name = Prediction;
+			sourceTree = "<group>";
+		};
+		AC4610E31E4524CC0059D5CD /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				AC4610D11E43D0980059D5CD /* PlaceModel.swift */,
+			);
+			name = Place;
+			sourceTree = "<group>";
+		};
 		ACFEEF781E3FDAA00091680B = {
 			isa = PBXGroup;
 			children = (
@@ -151,8 +170,8 @@
 		ACFEEFB41E3FDACB0091680B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AC4610CF1E43C9560059D5CD /* PlacePredictionModel.swift */,
-				AC4610D11E43D0980059D5CD /* PlaceModel.swift */,
+				AC4610E31E4524CC0059D5CD /* Place */,
+				AC4610E21E4524AF0059D5CD /* Prediction */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -340,7 +359,8 @@
 			files = (
 				ACFEEF871E3FDAA00091680B /* ViewController.swift in Sources */,
 				AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */,
-				AC4610D01E43C9560059D5CD /* PlacePredictionModel.swift in Sources */,
+				AC4610D41E43D5C70059D5CD /* PredictionSearchAPIModel.swift in Sources */,
+				AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */,
 				ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
