@@ -9,14 +9,17 @@
 /* Begin PBXBuildFile section */
 		AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
 		AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D11E43D0980059D5CD /* PlaceModel.swift */; };
-		AC4610D41E43D5C70059D5CD /* PredictionSearchServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D31E43D5C70059D5CD /* PredictionSearchServiceAPI.swift */; };
+		AC4610D41E43D5C70059D5CD /* PredictionSearchMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D31E43D5C70059D5CD /* PredictionSearchMockService.swift */; };
 		ACD25DF41E478B4E00F3E3AB /* PredictionSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */; };
+		ACD25DF71E47AA1E00F3E3AB /* PredictionSearchMockServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF61E47AA1E00F3E3AB /* PredictionSearchMockServiceTest.swift */; };
+		ACD25DF81E47AAD200F3E3AB /* PredictionSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */; };
+		ACD25DF91E47AAD400F3E3AB /* PredictionSearchMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D31E43D5C70059D5CD /* PredictionSearchMockService.swift */; };
+		ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
 		ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF841E3FDAA00091680B /* AppDelegate.swift */; };
 		ACFEEF871E3FDAA00091680B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF861E3FDAA00091680B /* ViewController.swift */; };
 		ACFEEF8A1E3FDAA00091680B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF881E3FDAA00091680B /* Main.storyboard */; };
 		ACFEEF8C1E3FDAA00091680B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF8B1E3FDAA00091680B /* Assets.xcassets */; };
 		ACFEEF8F1E3FDAA00091680B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF8D1E3FDAA00091680B /* LaunchScreen.storyboard */; };
-		ACFEEF9A1E3FDAA00091680B /* SwiftMVVMExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEF991E3FDAA00091680B /* SwiftMVVMExampleTests.swift */; };
 		ACFEEFA51E3FDAA00091680B /* SwiftMVVMExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEFA41E3FDAA00091680B /* SwiftMVVMExampleUITests.swift */; };
 		ACFEEFB91E3FDFF00091680B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFEEFB81E3FDFF00091680B /* Alamofire.framework */; };
 /* End PBXBuildFile section */
@@ -41,8 +44,9 @@
 /* Begin PBXFileReference section */
 		AC4610CF1E43C9560059D5CD /* PredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		AC4610D11E43D0980059D5CD /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
-		AC4610D31E43D5C70059D5CD /* PredictionSearchServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchServiceAPI.swift; sourceTree = "<group>"; };
+		AC4610D31E43D5C70059D5CD /* PredictionSearchMockService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchMockService.swift; sourceTree = "<group>"; };
 		ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchService.swift; sourceTree = "<group>"; };
+		ACD25DF61E47AA1E00F3E3AB /* PredictionSearchMockServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchMockServiceTest.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEEF841E3FDAA00091680B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEEF861E3FDAA00091680B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +55,6 @@
 		ACFEEF8E1E3FDAA00091680B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACFEEF901E3FDAA00091680B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACFEEF951E3FDAA00091680B /* SwiftMVVMExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMVVMExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACFEEF991E3FDAA00091680B /* SwiftMVVMExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMVVMExampleTests.swift; sourceTree = "<group>"; };
 		ACFEEF9B1E3FDAA00091680B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACFEEFA01E3FDAA00091680B /* SwiftMVVMExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMVVMExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEEFA41E3FDAA00091680B /* SwiftMVVMExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMVVMExampleUITests.swift; sourceTree = "<group>"; };
@@ -90,7 +93,7 @@
 			children = (
 				AC4610CF1E43C9560059D5CD /* PredictionModel.swift */,
 				ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */,
-				AC4610D31E43D5C70059D5CD /* PredictionSearchServiceAPI.swift */,
+				AC4610D31E43D5C70059D5CD /* PredictionSearchMockService.swift */,
 			);
 			name = Prediction;
 			sourceTree = "<group>";
@@ -140,7 +143,7 @@
 		ACFEEF981E3FDAA00091680B /* SwiftMVVMExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACFEEF991E3FDAA00091680B /* SwiftMVVMExampleTests.swift */,
+				ACD25DF61E47AA1E00F3E3AB /* PredictionSearchMockServiceTest.swift */,
 				ACFEEF9B1E3FDAA00091680B /* Info.plist */,
 			);
 			path = SwiftMVVMExampleTests;
@@ -362,7 +365,7 @@
 			files = (
 				ACFEEF871E3FDAA00091680B /* ViewController.swift in Sources */,
 				AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */,
-				AC4610D41E43D5C70059D5CD /* PredictionSearchServiceAPI.swift in Sources */,
+				AC4610D41E43D5C70059D5CD /* PredictionSearchMockService.swift in Sources */,
 				AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */,
 				ACD25DF41E478B4E00F3E3AB /* PredictionSearchService.swift in Sources */,
 				ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */,
@@ -373,7 +376,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACFEEF9A1E3FDAA00091680B /* SwiftMVVMExampleTests.swift in Sources */,
+				ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */,
+				ACD25DF81E47AAD200F3E3AB /* PredictionSearchService.swift in Sources */,
+				ACD25DF71E47AA1E00F3E3AB /* PredictionSearchMockServiceTest.swift in Sources */,
+				ACD25DF91E47AAD400F3E3AB /* PredictionSearchMockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

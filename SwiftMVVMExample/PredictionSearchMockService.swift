@@ -1,5 +1,5 @@
 //
-//  PredictionSearchServiceAPI.swift
+//  PredictionSearchMockService.swift
 //  SwiftMVVMExample
 //
 //  Created by Artem Mikhailov on 03/02/17.
@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import Alamofire
 
-class PredictionSearchServiceAPI: PredictionSearchService {
+class PredictionSearchMockService: PredictionSearchService {
     let minimalSearchTextLength = 3
     
     var delegate: PredictionSearchServiceDelegate?
@@ -23,13 +22,7 @@ class PredictionSearchServiceAPI: PredictionSearchService {
     
     private(set) var predictions: [PredictionModel] = []
     
-    private var currentRequest: Request?
-    
     private func search() {
-        // Cancel previous request
-        currentRequest?.cancel()
-        currentRequest = nil
-        
         // Check search text length
         if searchText.characters.count >= minimalSearchTextLength {
             // Perform a search
@@ -52,14 +45,12 @@ class PredictionSearchServiceAPI: PredictionSearchService {
     }
     
     private func performSearch(completionHandler: (_ result: [PredictionModel], _ error: Error?) -> Void) {
-        // TODO: Perform a real search
+        // Mock results
         var fakePredictions: [PredictionModel] = []
-        var fake = PredictionModel(predictionId: "1", placeId: "1", placeDescription: "Prediction 1")
-        fakePredictions.append(fake)
-        fake = PredictionModel(predictionId: "2", placeId: "2", placeDescription: "Prediction 2")
-        fakePredictions.append(fake)
-        fake = PredictionModel(predictionId: "3", placeId: "3", placeDescription: "Prediction 3")
-        fakePredictions.append(fake)
+        for i in 1..<10 {
+            let fake = PredictionModel(predictionId: "\(i)", placeId: "\(i)", placeDescription: "Prediction \(i)")
+            fakePredictions.append(fake)
+        }
         completionHandler(fakePredictions, nil)
     }
 }
