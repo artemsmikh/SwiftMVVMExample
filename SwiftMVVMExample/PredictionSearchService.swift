@@ -19,3 +19,7 @@ protocol PredictionSearchServiceDelegate {
     func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchService)
     func predictionSearchService(_ service: PredictionSearchService, didFailToUpdatePredictions error: Error)
 }
+
+enum PredictionSearchServiceError: Error {
+    case RequestFailure(message: String)
+}
