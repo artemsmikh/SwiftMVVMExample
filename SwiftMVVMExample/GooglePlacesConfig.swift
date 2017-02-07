@@ -12,7 +12,12 @@ class GooglePlacesConfig {
     private(set) var apiKey: String = ""
     
     init(plistName name: String) {
-        if let path = Bundle.main.path(forResource: name, ofType: "plist") {
+        // Check for both default and example paths (just in case
+        // when someone hasn't renamed example .plist file)
+        let defaultPath = Bundle.main.path(forResource: name, ofType: "plist")
+        let examplePath = Bundle.main.path(forResource: name, ofType: "plist.example")
+        
+        if let path = defaultPath ?? examplePath {
             let config = NSDictionary(contentsOfFile: path)
             
             if let value = config?.object(forKey: "apiKey") as? String {

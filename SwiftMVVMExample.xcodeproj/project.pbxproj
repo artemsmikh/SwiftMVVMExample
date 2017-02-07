@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
 		AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D11E43D0980059D5CD /* PlaceModel.swift */; };
-		AC657B2B1E48E52A00C84B60 /* GooglePlacesTestConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC657B2A1E48E52A00C84B60 /* GooglePlacesTestConfig.plist */; };
+		AC657B2B1E48E52A00C84B60 /* GooglePlacesConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC657B2A1E48E52A00C84B60 /* GooglePlacesConfig.plist */; };
 		AC657B2D1E48E57100C84B60 /* GooglePlacesConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B2C1E48E57100C84B60 /* GooglePlacesConfig.swift */; };
 		AC657B301E49846000C84B60 /* PredictionSearchAPIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B2F1E49845F00C84B60 /* PredictionSearchAPIParser.swift */; };
 		AC657B321E49854F00C84B60 /* PredictionSearchAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B311E49854F00C84B60 /* PredictionSearchAPIError.swift */; };
@@ -20,6 +20,7 @@
 		AC657B3E1E4A33E000C84B60 /* PredictionSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B3D1E4A33E000C84B60 /* PredictionSearchViewModel.swift */; };
 		AC657B401E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B3F1E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift */; };
 		AC657B421E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B411E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift */; };
+		AC657B471E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = AC657B461E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example */; };
 		ACD25DF41E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DF81E47AAD200F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
@@ -54,7 +55,7 @@
 /* Begin PBXFileReference section */
 		AC4610CF1E43C9560059D5CD /* PredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		AC4610D11E43D0980059D5CD /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
-		AC657B2A1E48E52A00C84B60 /* GooglePlacesTestConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GooglePlacesTestConfig.plist; sourceTree = "<group>"; };
+		AC657B2A1E48E52A00C84B60 /* GooglePlacesConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GooglePlacesConfig.plist; sourceTree = "<group>"; };
 		AC657B2C1E48E57100C84B60 /* GooglePlacesConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesConfig.swift; sourceTree = "<group>"; };
 		AC657B2F1E49845F00C84B60 /* PredictionSearchAPIParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIParser.swift; sourceTree = "<group>"; };
 		AC657B311E49854F00C84B60 /* PredictionSearchAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIError.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		AC657B3D1E4A33E000C84B60 /* PredictionSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchViewModel.swift; sourceTree = "<group>"; };
 		AC657B3F1E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionCellViewModelProtocol.swift; sourceTree = "<group>"; };
 		AC657B411E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchViewModelProtocol.swift; sourceTree = "<group>"; };
+		AC657B461E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GooglePlacesConfig.plist.example; sourceTree = "<group>"; };
 		ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchServiceProtocol.swift; sourceTree = "<group>"; };
 		ACD25DFE1E47C2F400F3E3AB /* PredictionSearchAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIService.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +137,8 @@
 		AC657B291E48E4FB00C84B60 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				AC657B2A1E48E52A00C84B60 /* GooglePlacesTestConfig.plist */,
+				AC657B461E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example */,
+				AC657B2A1E48E52A00C84B60 /* GooglePlacesConfig.plist */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -178,6 +181,14 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		AC657B451E4A507800C84B60 /* Prediction */ = {
+			isa = PBXGroup;
+			children = (
+				ACFEEF861E3FDAA00091680B /* ViewController.swift */,
+			);
+			name = Prediction;
+			sourceTree = "<group>";
+		};
 		ACFEEF781E3FDAA00091680B = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +217,6 @@
 				ACFEEFB31E3FDABE0091680B /* View Model */,
 				ACFEEFB21E3FDAB60091680B /* View */,
 				ACFEEF841E3FDAA00091680B /* AppDelegate.swift */,
-				ACFEEF861E3FDAA00091680B /* ViewController.swift */,
 				ACFEEFB51E3FDAE40091680B /* Supporting Files */,
 			);
 			path = SwiftMVVMExample;
@@ -234,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				ACFEEFB61E3FDAFE0091680B /* Storyboards */,
+				AC657B451E4A507800C84B60 /* Prediction */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -394,8 +405,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC657B471E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example in Resources */,
 				ACFEEF8F1E3FDAA00091680B /* LaunchScreen.storyboard in Resources */,
-				AC657B2B1E48E52A00C84B60 /* GooglePlacesTestConfig.plist in Resources */,
+				AC657B2B1E48E52A00C84B60 /* GooglePlacesConfig.plist in Resources */,
 				ACFEEF8C1E3FDAA00091680B /* Assets.xcassets in Resources */,
 				ACFEEF8A1E3FDAA00091680B /* Main.storyboard in Resources */,
 			);
