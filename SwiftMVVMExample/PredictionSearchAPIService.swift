@@ -68,11 +68,12 @@ class PredictionSearchAPIService: PredictionSearchService {
             
             // Check that response is a correct JSON
             guard let json = response.result.value as? [String: Any] else {
-                completionHandler([], self.requestError("Invalid response"))
+                completionHandler([], PredictionSearchAPIError.InvalidResponse)
                 return
             }
             
-            let parseResults = self.parseResponse(json)
+            // Parse JSON response
+            let parseResults = PredictionSearchAPIParser.parseResponse(json)
             
             if let error = parseResults.error {
                 completionHandler([], error)
@@ -83,83 +84,11 @@ class PredictionSearchAPIService: PredictionSearchService {
         }
     }
     
-    private func parseResponse(_ response: [String: Any]) -> (result: [PredictionModel], error: Error?) {
-        // Check that response has a "status" key
-        guard let status = response["status"] as? String else {
-            return ([], requestError("Response does not contain a status"))
-        }
-        
-        // Check that status is ok
-        if status != "OK" && status != "ZERO_RESULTS" {
-            return ([], requestError("Incorrect response status"))
-        }
-        
-        // Check that response has a "predictions" key
-        guard let predictionsInfo = response["predictions"] as? [Any] else {
-            return ([], requestError("Response does not contain predictions"))
-        }
-        
-        // Parse predictions
-        var result: [PredictionModel] = []
-        
-        for info in predictionsInfo {
-            if let info = info as? [String: Any] {
-                if let prediction = parsePrediction(from: info) {
-                    result.append(prediction)
-                }
-            }
-        }
-        
-        // Return parser predictions
-        return (result, nil)
-    }
-    
-    private func parsePrediction(from info: [String: Any]) -> PredictionModel? {
-        // Check for all necessary values
-        guard let id = info["id"] as? String,
-              let placeId = info["place_id"] as? String,
-              let placeDescription = info["description"] as? String else {
-                return nil;
-        }
-        
-        let prediction = PredictionModel(predictionId: id, placeId: placeId, placeDescription: placeDescription)
-        
-        // Add prediction types if there any
-        if let types = info["types"] as? [String] {
-            prediction.types = []
-            
-            for type in types {
-                prediction.types?.append(type)
-            }
-        }
-        
-        // Add matches if there any
-        if let matches = info["matched_substrings"] as? [Any] {
-            prediction.matches = []
-            
-            for match in matches {
-                guard let match = match as? [String: Any],
-                      let length = match["length"] as? Int,
-                      let offset = match["offset"] as? Int else {
-                        continue
-                }
-                
-                prediction.matches?.append((offset: offset, length: length))
-            }
-        }
-        
-        return prediction
-    }
-    
     private func prepareRequestUrl() -> String {
         return "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     }
     
     private func prepareRequestParameters() -> Parameters {
         return ["input": searchText, "key": config.apiKey]
-    }
-    
-    private func requestError(_ message: String) -> Error {
-        return PredictionSearchServiceError.RequestFailure(message: message)
     }
 }
