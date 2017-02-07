@@ -9,10 +9,19 @@
 import Foundation
 
 protocol PredictionSearchService {
+    var status: PredictionSearchServiceStatus { get }
+    
     var delegate: PredictionSearchServiceDelegate? { get set }
     
     var searchText: String { get set }
     var predictions: [PredictionModel] { get }
+}
+
+enum PredictionSearchServiceStatus {
+    case ShortInput
+    case Loading
+    case HasResults
+    case NoResults
 }
 
 protocol PredictionSearchServiceDelegate {

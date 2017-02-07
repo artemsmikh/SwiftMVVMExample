@@ -21,6 +21,8 @@ class PredictionSearchAPIService: PredictionSearchService {
         }
     }
     
+    private(set) var status: PredictionSearchServiceStatus = .ShortInput
+    
     private(set) var predictions: [PredictionModel] = []
     
     init(withConfig config: GooglePlacesConfig) {
@@ -38,19 +40,25 @@ class PredictionSearchAPIService: PredictionSearchService {
         // Check search text length
         if searchText.characters.count >= minimalSearchTextLength {
             // Perform a search
+            status = .Loading
             performSearch(completionHandler: { (result, error) in
                 // Save received predictions (for both cases when the error exists or not)
                 self.predictions = result
                 if let error = error {
+                    // In case of an error we set the 'HasResults' status to distinguish it
+                    // from the case when there wasn't any error and results are really empty
+                    self.status = .HasResults
                     // If there was an error - notify delegate about it
                     self.delegate?.predictionSearchService(self, didFailToUpdatePredictions: error)
                 } else {
+                    self.status = self.predictions.count > 0 ? .HasResults : .NoResults
                     // Notify delegate about successfull result
                     self.delegate?.predictionSearchServiceDidUpdatePredictions(self)
                 }
             })
         } else {
             // Clear old values and notify delegate
+            status = .ShortInput
             predictions = []
             delegate?.predictionSearchServiceDidUpdatePredictions(self)
         }
