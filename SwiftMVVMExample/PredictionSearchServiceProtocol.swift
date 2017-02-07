@@ -1,5 +1,5 @@
 //
-//  PredictionSearchService.swift
+//  PredictionSearchServiceProtocol.swift
 //  SwiftMVVMExample
 //
 //  Created by Artem Mikhailov on 05/02/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PredictionSearchService {
+protocol PredictionSearchServiceProtocol {
     var status: PredictionSearchServiceStatus { get }
     
     var delegate: PredictionSearchServiceDelegate? { get set }
@@ -25,6 +25,6 @@ enum PredictionSearchServiceStatus {
 }
 
 protocol PredictionSearchServiceDelegate {
-    func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchService)
-    func predictionSearchService(_ service: PredictionSearchService, didFailToUpdatePredictions error: Error)
+    func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchServiceProtocol)
+    func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error)
 }

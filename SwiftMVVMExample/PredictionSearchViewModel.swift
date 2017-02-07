@@ -33,9 +33,9 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
         }
     }
     
-    fileprivate var searchService: PredictionSearchService
+    fileprivate var searchService: PredictionSearchServiceProtocol
     
-    init(withSearchService service: PredictionSearchService) {
+    init(withSearchService service: PredictionSearchServiceProtocol) {
         searchService = service
         searchService.delegate = self
     }
@@ -54,7 +54,7 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
 }
 
 extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
-    func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchService) {
+    func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchServiceProtocol) {
         var updatedCells: [PredictionCellViewModelProtocol] = []
         for prediction in searchService.predictions {
             updatedCells.append(PredictionCellViewModel(withPrediction: prediction))
@@ -68,7 +68,7 @@ extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
         }
     }
     
-    func predictionSearchService(_ service: PredictionSearchService, didFailToUpdatePredictions error: Error) {
+    func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error) {
         self.cells = []
         showTooltip(withText: "An error occured, please try again later")
     }

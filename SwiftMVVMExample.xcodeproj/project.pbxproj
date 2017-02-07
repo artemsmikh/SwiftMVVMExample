@@ -20,8 +20,8 @@
 		AC657B3E1E4A33E000C84B60 /* PredictionSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B3D1E4A33E000C84B60 /* PredictionSearchViewModel.swift */; };
 		AC657B401E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B3F1E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift */; };
 		AC657B421E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B411E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift */; };
-		ACD25DF41E478B4E00F3E3AB /* PredictionSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */; };
-		ACD25DF81E47AAD200F3E3AB /* PredictionSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */; };
+		ACD25DF41E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
+		ACD25DF81E47AAD200F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
 		ACD25DFD1E47C27E00F3E3AB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFEEFB81E3FDFF00091680B /* Alamofire.framework */; };
 		ACD25DFF1E47C2F400F3E3AB /* PredictionSearchAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DFE1E47C2F400F3E3AB /* PredictionSearchAPIService.swift */; };
@@ -63,7 +63,7 @@
 		AC657B3D1E4A33E000C84B60 /* PredictionSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchViewModel.swift; sourceTree = "<group>"; };
 		AC657B3F1E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionCellViewModelProtocol.swift; sourceTree = "<group>"; };
 		AC657B411E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchViewModelProtocol.swift; sourceTree = "<group>"; };
-		ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchService.swift; sourceTree = "<group>"; };
+		ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchServiceProtocol.swift; sourceTree = "<group>"; };
 		ACD25DFE1E47C2F400F3E3AB /* PredictionSearchAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIService.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEEF841E3FDAA00091680B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		AC657B2E1E4982CA00C84B60 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				ACD25DF31E478B4E00F3E3AB /* PredictionSearchService.swift */,
+				ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */,
 				ACD25DFE1E47C2F400F3E3AB /* PredictionSearchAPIService.swift */,
 				AC657B2F1E49845F00C84B60 /* PredictionSearchAPIParser.swift */,
 				AC657B311E49854F00C84B60 /* PredictionSearchAPIError.swift */,
@@ -446,7 +446,7 @@
 				AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */,
 				ACD25DFF1E47C2F400F3E3AB /* PredictionSearchAPIService.swift in Sources */,
 				AC657B3E1E4A33E000C84B60 /* PredictionSearchViewModel.swift in Sources */,
-				ACD25DF41E478B4E00F3E3AB /* PredictionSearchService.swift in Sources */,
+				ACD25DF41E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */,
 				AC657B2D1E48E57100C84B60 /* GooglePlacesConfig.swift in Sources */,
 				ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */,
 				AC657B401E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift in Sources */,
@@ -460,7 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */,
-				ACD25DF81E47AAD200F3E3AB /* PredictionSearchService.swift in Sources */,
+				ACD25DF81E47AAD200F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */,
 				AC657B351E4987E300C84B60 /* PredictionSearchAPIParserTest.swift in Sources */,
 				AC657B361E49880D00C84B60 /* PredictionSearchAPIParser.swift in Sources */,
 				AC657B371E49880D00C84B60 /* PredictionSearchAPIError.swift in Sources */,
