@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let predictionsController = self.window?.rootViewController as? PredictionsViewController {
+            let config = GooglePlacesConfig(plistName: "GooglePlacesConfig")
+            let searchService = PredictionSearchAPIService(withConfig: config)
+            let searchViewModel = PredictionSearchViewModel(withSearchService: searchService)
+            predictionsController.viewModel = searchViewModel
+        }
+        
         return true
     }
 

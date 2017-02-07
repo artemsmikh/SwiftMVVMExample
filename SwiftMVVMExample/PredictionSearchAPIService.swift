@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class PredictionSearchAPIService: PredictionSearchServiceProtocol {
-    let minimalSearchTextLength = 3
+    let minimalSearchTextLength = 1
     
     var delegate: PredictionSearchServiceDelegate?
     

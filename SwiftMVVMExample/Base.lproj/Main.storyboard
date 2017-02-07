@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Predictions View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PredictionsViewController" customModule="SwiftMVVMExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,45 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="hpE-mZ-S6d">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aF3-3d-lfO">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCO-PI-cdi">
+                                <rect key="frame" x="16" y="80" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WCO-PI-cdi" firstAttribute="top" secondItem="hpE-mZ-S6d" secondAttribute="bottom" constant="16" id="0fg-kZ-4cp"/>
+                            <constraint firstItem="aF3-3d-lfO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4GB-Vl-kaD"/>
+                            <constraint firstAttribute="trailing" secondItem="aF3-3d-lfO" secondAttribute="trailing" id="8mW-s7-Xai"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aF3-3d-lfO" secondAttribute="bottom" id="Ivw-ci-pbn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WCO-PI-cdi" secondAttribute="trailing" id="NCd-Z3-XNJ"/>
+                            <constraint firstItem="aF3-3d-lfO" firstAttribute="top" secondItem="hpE-mZ-S6d" secondAttribute="bottom" id="Wcb-bb-oQ0"/>
+                            <constraint firstItem="hpE-mZ-S6d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gw9-XX-ALl"/>
+                            <constraint firstItem="hpE-mZ-S6d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nVv-bC-YIN"/>
+                            <constraint firstItem="hpE-mZ-S6d" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rwP-Zy-Znk"/>
+                            <constraint firstItem="WCO-PI-cdi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z5P-bc-4lT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="hpE-mZ-S6d" id="vHG-nN-O3F"/>
+                        <outlet property="tableView" destination="aF3-3d-lfO" id="jdU-n8-C5D"/>
+                        <outlet property="tooltipLabel" destination="WCO-PI-cdi" id="Rp6-cW-fkX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-279" y="97"/>
         </scene>
     </scenes>
 </document>
