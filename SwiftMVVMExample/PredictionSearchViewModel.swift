@@ -70,6 +70,12 @@ extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
     
     func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error) {
         self.cells = []
+        
+        // Don't inform view about -999 (Cancelled) error
+        if (error as NSError).code == NSURLErrorCancelled {
+            return
+        }
+        
         showTooltip(withText: "An error occured, please try again later")
     }
 }
