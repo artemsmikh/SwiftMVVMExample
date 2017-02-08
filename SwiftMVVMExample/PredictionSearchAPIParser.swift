@@ -26,15 +26,15 @@ class PredictionSearchAPIParser {
             }
         }
         
-        // Return parser predictions
+        // Return parsed predictions
         return (result, nil)
     }
     
-    static func parsePrediction(from info: [String: Any]) -> PredictionModel? {
+    private static func parsePrediction(from info: [String: Any]) -> PredictionModel? {
         // Check for all necessary values
         guard let id = info["id"] as? String,
-            let placeId = info["place_id"] as? String,
-            let placeDescription = info["description"] as? String else {
+              let placeId = info["place_id"] as? String,
+              let placeDescription = info["description"] as? String else {
                 return nil;
         }
         

@@ -17,7 +17,6 @@ class PlaceModel {
     var website: URL?
     var address: String?
     var phone: String?
-    var types: [String]?
     
     init(placeId: String, name: String) {
         self.placeId = placeId
