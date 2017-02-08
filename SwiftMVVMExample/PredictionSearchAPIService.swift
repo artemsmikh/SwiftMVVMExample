@@ -11,6 +11,7 @@ import Alamofire
 
 class PredictionSearchAPIService: PredictionSearchServiceProtocol {
     let minimalSearchTextLength = 1
+    let minimumTimeIntervalBetweenRequests: TimeInterval = 0.5
     
     var delegate: PredictionSearchServiceDelegate?
     
@@ -31,40 +32,56 @@ class PredictionSearchAPIService: PredictionSearchServiceProtocol {
     
     private var config: GooglePlacesConfig
     private var currentRequest: Request? = nil
+    private var timerBetweenRequests: Timer? = nil
+    private var shouldLaunchSearchWhenTimerFires: Bool = false
     
     private func search() {
-        // Cancel current request (if exists)
-        currentRequest?.cancel()
-        currentRequest = nil
-        
-        // Check search text length
-        if searchText.characters.count >= minimalSearchTextLength {
-            // Perform a search
-            status = .Loading
-            performSearch(completionHandler: { (result, error) in
-                // Save received predictions (for both cases when the error exists or not)
-                self.predictions = result
-                if let error = error {
-                    // In case of an error we set the 'HasResults' status to distinguish it
-                    // from the case when there wasn't any error and results are really empty
-                    self.status = .HasResults
-                    // If there was an error - notify delegate about it
-                    self.delegate?.predictionSearchService(self, didFailToUpdatePredictions: error)
-                } else {
-                    self.status = self.predictions.count > 0 ? .HasResults : .NoResults
-                    // Notify delegate about successfull result
-                    self.delegate?.predictionSearchServiceDidUpdatePredictions(self)
-                }
-            })
-        } else {
+        guard searchText.characters.count >= minimalSearchTextLength else {
+            // Cancel request timer if exists
+            stopRequestTimer()
+            
+            // Cancel any current request
+            cancelSearchRequest()
+            
             // Clear old values and notify delegate
             status = .ShortInput
             predictions = []
             delegate?.predictionSearchServiceDidUpdatePredictions(self)
+            
+            return
         }
+        
+        // Check if we have another request and minimum time interval has not passed
+        guard hasReachedMinimumTimeBetweenRequests() else {
+            shouldLaunchSearchWhenTimerFires = true
+            return
+        }
+        
+        // Run a timer for checking minimum time between requests
+        startRequestTimer()
+        
+        // Perform a search
+        status = .Loading
+        
+        // Make a request
+        createSearchRequest(completionHandler: { (result, error) in
+            // Save received predictions (for both cases when the error exists or not)
+            self.predictions = result
+            if let error = error {
+                // In case of an error we set the 'HasResults' status to distinguish it
+                // from the case when there wasn't any error and results are really empty
+                self.status = .HasResults
+                // If there was an error - notify delegate about it
+                self.delegate?.predictionSearchService(self, didFailToUpdatePredictions: error)
+            } else {
+                self.status = self.predictions.count > 0 ? .HasResults : .NoResults
+                // Notify delegate about successfull result
+                self.delegate?.predictionSearchServiceDidUpdatePredictions(self)
+            }
+        })
     }
     
-    private func performSearch(completionHandler: @escaping (_ result: [PredictionModel], _ error: Error?) -> Void) {
+    private func createSearchRequest(completionHandler: @escaping (_ result: [PredictionModel], _ error: Error?) -> Void) {
         let url = prepareRequestUrl()
         let parameters = prepareRequestParameters()
         
@@ -90,6 +107,42 @@ class PredictionSearchAPIService: PredictionSearchServiceProtocol {
             
             completionHandler(parseResults.result, nil)
         }
+    }
+    
+    private func cancelSearchRequest() {
+        currentRequest?.cancel()
+        currentRequest = nil
+    }
+    
+    private func startRequestTimer() {
+        stopRequestTimer()
+        
+        timerBetweenRequests = Timer.scheduledTimer(withTimeInterval: minimumTimeIntervalBetweenRequests, repeats: false, block: { timer in
+            self.timerBetweenRequests = nil
+            self.onTimerFires()
+        })
+    }
+    
+    private func stopRequestTimer() {
+        if let timer = timerBetweenRequests, timer.isValid {
+            timer.invalidate()
+            timerBetweenRequests = nil
+        }
+    }
+    
+    private func onTimerFires() {
+        // Calls when we have passed a minimum amount of time after last request
+        if shouldLaunchSearchWhenTimerFires {
+            shouldLaunchSearchWhenTimerFires = false
+            search()
+        }
+    }
+    
+    private func hasReachedMinimumTimeBetweenRequests() -> Bool {
+        if let _: Bool = timerBetweenRequests?.isValid {
+            return false
+        }
+        return true
     }
     
     private func prepareRequestUrl() -> String {
