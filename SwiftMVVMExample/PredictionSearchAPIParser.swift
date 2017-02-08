@@ -9,20 +9,10 @@
 import Foundation
 
 class PredictionSearchAPIParser {
-    static func parseResponse(_ response: [String: Any]) -> (result: [PredictionModel], error: PredictionSearchAPIError?) {
-        // Check that response has a "status" key
-        guard let status = response["status"] as? String else {
-            return ([], PredictionSearchAPIError.WrongResponseFormat)
-        }
-        
-        // Check that status is ok
-        if status != "OK" && status != "ZERO_RESULTS" {
-            return ([], PredictionSearchAPIError.IncorrectResponseStatus)
-        }
-        
+    static func parseResponse(_ response: [String: Any]) -> (result: [PredictionModel], error: Error?) {
         // Check that response has a "predictions" key
         guard let predictionsInfo = response["predictions"] as? [Any] else {
-            return ([], PredictionSearchAPIError.WrongResponseFormat)
+            return ([], GooglePlacesAPIResponseError.WrongResponseFormat)
         }
         
         // Parse predictions

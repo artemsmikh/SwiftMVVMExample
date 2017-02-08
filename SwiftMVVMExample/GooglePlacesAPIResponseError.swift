@@ -1,20 +1,20 @@
 //
-//  PredictionSearchAPIError.swift
+//  GooglePlacesAPIResponseError.swift
 //  SwiftMVVMExample
 //
-//  Created by Artem Mikhailov on 07/02/17.
+//  Created by Artem Mikhailov on 08/02/17.
 //  Copyright © 2017 Artem Mikhailov. All rights reserved.
 //
 
 import Foundation
 
-enum PredictionSearchAPIError: Error {
+enum GooglePlacesAPIResponseError: Error {
     case InvalidResponse
     case WrongResponseFormat
     case IncorrectResponseStatus
 }
 
-extension PredictionSearchAPIError: CustomStringConvertible {
+extension GooglePlacesAPIResponseError: CustomStringConvertible {
     var description: String {
         switch self {
         case .InvalidResponse:

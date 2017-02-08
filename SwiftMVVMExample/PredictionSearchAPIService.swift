@@ -86,26 +86,23 @@ class PredictionSearchAPIService: PredictionSearchServiceProtocol {
         let parameters = prepareRequestParameters()
         
         currentRequest = Alamofire.request(url, parameters: parameters).responseJSON { response in
-            if let error = response.error {
+            // Parse network response in default way for Google API
+            let responseParseResult = GooglePlacesAPIResponseParser.parseResponse(response)
+            
+            if let error = responseParseResult.error {
                 completionHandler([], error)
                 return
             }
             
-            // Check that response is a correct JSON
-            guard let json = response.result.value as? [String: Any] else {
-                completionHandler([], PredictionSearchAPIError.InvalidResponse)
-                return
-            }
+            // Parse correct JSON response
+            let predictionsParseResults = PredictionSearchAPIParser.parseResponse(responseParseResult.json!)
             
-            // Parse JSON response
-            let parseResults = PredictionSearchAPIParser.parseResponse(json)
-            
-            if let error = parseResults.error {
+            if let error = predictionsParseResults.error {
                 completionHandler([], error)
                 return
             }
             
-            completionHandler(parseResults.result, nil)
+            completionHandler(predictionsParseResults.result, nil)
         }
     }
     
