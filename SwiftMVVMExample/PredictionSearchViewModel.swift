@@ -38,6 +38,10 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     init(withSearchService service: PredictionSearchServiceProtocol) {
         searchService = service
         searchService.delegate = self
+        
+        if searchTextIsEmpty() {
+            showEmptySearchTextTooltip()
+        }
     }
     
     fileprivate func showTooltip(withText text: String) {
@@ -51,6 +55,14 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
         displayTooltip = false
         delegate?.predictionSearchViewModelDidUpdateTooltip(self)
     }
+    
+    fileprivate func searchTextIsEmpty() -> Bool {
+        return searchService.searchText.characters.count == 0
+    }
+    
+    fileprivate func showEmptySearchTextTooltip() {
+        showTooltip(withText: "Start typing a place name and the suggestions will appear here!")
+    }
 }
 
 extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
@@ -63,6 +75,8 @@ extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
         
         if service.status == .NoResults {
             showTooltip(withText: "We could not find this place")
+        } else if service.status == .ShortInput && searchTextIsEmpty() {
+            showEmptySearchTextTooltip()
         } else if displayTooltip {
             hideTooltip()
         }
