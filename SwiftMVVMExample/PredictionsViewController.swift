@@ -30,6 +30,7 @@ class PredictionsViewController: UIViewController {
         searchBar.placeholder = viewModel?.searchPlaceholderText
         
         tableView.dataSource = self
+        tableView.delegate = self
         
         updateTooltip()
         updatePredictions()
@@ -74,6 +75,13 @@ extension PredictionsViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension PredictionsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // Hide section header (view model has nothing to do with this)
+        return CGFloat.leastNonzeroMagnitude
     }
 }
 
