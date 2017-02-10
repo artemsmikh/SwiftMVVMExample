@@ -65,16 +65,18 @@ extension PredictionsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue or create a new cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-            ?? UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
+        }
         
         // Fill cell with data
         if let cellViewModel = viewModel?.cells[indexPath.row] {
-            cell.textLabel?.attributedText = cellViewModel.name
-            cell.detailTextLabel?.text = cellViewModel.types
+            cell!.textLabel?.attributedText = cellViewModel.name
+            cell!.detailTextLabel?.text = cellViewModel.types
         }
         
-        return cell
+        return cell!
     }
 }
 
