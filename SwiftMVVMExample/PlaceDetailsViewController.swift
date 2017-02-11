@@ -11,6 +11,7 @@ import UIKit
 class PlaceDetailsViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var iconActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -77,10 +78,16 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     fileprivate func updateIcon() {
-        self.iconImageView.isHidden = !viewModel!.showIcon
-        self.iconImageView.image = viewModel!.icon
+        let showActivityIndicator = viewModel!.showIcon && viewModel!.icon == nil
+        let showImage = viewModel!.showIcon && viewModel!.icon != nil
+        
+        self.iconImageView.isHidden = !showImage
+        self.iconActivityIndicator.isHidden = !showActivityIndicator
+        
+        if showImage {
+            self.iconImageView.image = viewModel!.icon
+        }
     }
-    
 }
 
 extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {

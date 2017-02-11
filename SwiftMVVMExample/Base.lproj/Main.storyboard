@@ -103,6 +103,9 @@
                                                             <constraint firstAttribute="height" constant="40" id="JfB-cB-hPE"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="91E-Dg-pcD">
+                                                        <rect key="frame" x="319" y="18" width="40" height="40"/>
+                                                    </activityIndicatorView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5g-0V-85G">
                                                         <rect key="frame" x="16" y="104.5" width="343" height="46"/>
                                                         <subviews>
@@ -187,6 +190,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="91E-Dg-pcD" firstAttribute="centerX" secondItem="QpW-WS-Sso" secondAttribute="centerX" id="3Hk-WI-15D"/>
                                                     <constraint firstItem="Mrn-CK-gmV" firstAttribute="leading" secondItem="DSm-gV-VBH" secondAttribute="leading" constant="16" id="3lI-33-kSc"/>
                                                     <constraint firstItem="Z5g-0V-85G" firstAttribute="top" secondItem="fSV-KU-6Gb" secondAttribute="bottom" constant="32" id="7su-2k-sIg"/>
                                                     <constraint firstItem="Z5g-0V-85G" firstAttribute="leading" secondItem="DSm-gV-VBH" secondAttribute="leading" constant="16" id="8TP-2f-rAe"/>
@@ -198,19 +202,22 @@
                                                     <constraint firstItem="QpW-WS-Sso" firstAttribute="centerY" secondItem="Mrn-CK-gmV" secondAttribute="centerY" id="SiR-wb-bTO"/>
                                                     <constraint firstItem="QSX-6I-vxZ" firstAttribute="top" secondItem="rcu-dg-Feq" secondAttribute="bottom" id="WLr-Wq-MWQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="QpW-WS-Sso" secondAttribute="trailing" constant="16" id="Wi1-mz-eeG"/>
+                                                    <constraint firstItem="91E-Dg-pcD" firstAttribute="width" secondItem="QpW-WS-Sso" secondAttribute="width" id="X5i-wg-MGu"/>
                                                     <constraint firstItem="QSX-6I-vxZ" firstAttribute="leading" secondItem="DSm-gV-VBH" secondAttribute="leading" constant="16" id="k9I-Ue-XGj"/>
                                                     <constraint firstAttribute="bottom" secondItem="QSX-6I-vxZ" secondAttribute="bottom" constant="16" id="qxg-Ck-QTr"/>
+                                                    <constraint firstItem="91E-Dg-pcD" firstAttribute="height" secondItem="QpW-WS-Sso" secondAttribute="height" id="rL3-KV-JEV"/>
+                                                    <constraint firstItem="91E-Dg-pcD" firstAttribute="centerY" secondItem="QpW-WS-Sso" secondAttribute="centerY" id="tpH-76-nbK"/>
                                                     <constraint firstAttribute="trailing" secondItem="QSX-6I-vxZ" secondAttribute="trailing" constant="16" id="tq9-dv-Lkz"/>
                                                     <constraint firstItem="rcu-dg-Feq" firstAttribute="top" secondItem="Z5g-0V-85G" secondAttribute="bottom" id="va8-FE-hB5"/>
                                                     <constraint firstItem="QpW-WS-Sso" firstAttribute="leading" secondItem="Mrn-CK-gmV" secondAttribute="trailing" constant="8" id="yWw-Gj-CHm"/>
                                                     <constraint firstItem="rcu-dg-Feq" firstAttribute="leading" secondItem="DSm-gV-VBH" secondAttribute="leading" constant="16" id="z7w-CA-f2a"/>
                                                 </constraints>
                                             </view>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7qJ-GM-yA7">
-                                                <rect key="frame" x="172" y="16" width="30" height="30"/>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7qJ-GM-yA7">
+                                                <rect key="frame" x="167" y="16" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="6C4-PA-Qwf"/>
-                                                    <constraint firstAttribute="width" constant="30" id="uck-GF-rAv"/>
+                                                    <constraint firstAttribute="height" constant="40" id="6C4-PA-Qwf"/>
+                                                    <constraint firstAttribute="width" constant="40" id="uck-GF-rAv"/>
                                                 </constraints>
                                             </activityIndicatorView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7e-ZH-qHK">
@@ -257,6 +264,7 @@
                         <outlet property="addressLabel" destination="Fpv-78-5kg" id="B2w-Uv-4FM"/>
                         <outlet property="contentView" destination="DSm-gV-VBH" id="aVW-VN-Npe"/>
                         <outlet property="errorLabel" destination="d7e-ZH-qHK" id="4f1-CK-p5n"/>
+                        <outlet property="iconActivityIndicator" destination="91E-Dg-pcD" id="gYs-0F-blL"/>
                         <outlet property="iconImageView" destination="QpW-WS-Sso" id="Uc0-nH-yDR"/>
                         <outlet property="nameLabel" destination="Mrn-CK-gmV" id="2V6-X8-B19"/>
                         <outlet property="phoneLabel" destination="Wxx-pH-tPa" id="a0z-A0-a00"/>

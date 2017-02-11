@@ -157,13 +157,17 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     
     private func updateIcon() {
         if let url = model?.icon {
+            self.showIcon = true
             URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                 guard let data = data, error == nil else {
                     return
                 }
                 
-                self.icon = UIImage(data: data)
-                self.showIcon = true
+                let image = UIImage(data: data)
+                
+                DispatchQueue.main.async {
+                    self.icon = image
+                }
             }).resume()
         } else {
             self.showIcon = false
