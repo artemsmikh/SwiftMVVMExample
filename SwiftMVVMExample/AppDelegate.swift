@@ -12,14 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private lazy var googlePlacesConfig: GooglePlacesConfig = {
+        return GooglePlacesConfig(plistName: "GooglePlacesConfig")
+    }()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         if let navigationController = self.window?.rootViewController as? UINavigationController {
             if let predictionsController = navigationController.viewControllers.first as? PredictionsViewController {
-                let config = GooglePlacesConfig(plistName: "GooglePlacesConfig")
-                let searchService = PredictionSearchAPIService(withConfig: config)
+                let searchService = PredictionSearchAPIService(withConfig: googlePlacesConfig)
                 let searchViewModel = PredictionSearchViewModel(withSearchService: searchService)
                 predictionsController.viewModel = searchViewModel
             }
@@ -50,6 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    // MARK: Public 
+    
+    func preparePlaceDetailsViewModel(forPlaceId placeId: String) -> PlaceDetailsViewModelProtocol {
+        let service = PlaceDetailsAPIService(withPlaceId: placeId, config: googlePlacesConfig)
+        return PlaceDetailsViewModel(withService: service)
+    }
 
 }
 

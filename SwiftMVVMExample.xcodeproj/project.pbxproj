@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC36999F1E4F8A500071EBD6 /* PlaceDetailsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36999E1E4F8A4F0071EBD6 /* PlaceDetailsViewModelProtocol.swift */; };
-		AC3699A11E4F9BCB0071EBD6 /* MockPlaceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3699A01E4F9BCB0071EBD6 /* MockPlaceDetailsViewModel.swift */; };
 		AC3699A41E4F9C8E0071EBD6 /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3699A31E4F9C8E0071EBD6 /* PlaceDetailsViewController.swift */; };
+		AC3699A61E4FB2350071EBD6 /* PlaceDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3699A51E4FB2350071EBD6 /* PlaceDetailsViewModel.swift */; };
 		AC4610D01E43C9560059D5CD /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
 		AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610D11E43D0980059D5CD /* PlaceModel.swift */; };
 		AC657B2B1E48E52A00C84B60 /* GooglePlacesConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC657B2A1E48E52A00C84B60 /* GooglePlacesConfig.plist */; };
@@ -60,8 +60,8 @@
 
 /* Begin PBXFileReference section */
 		AC36999E1E4F8A4F0071EBD6 /* PlaceDetailsViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewModelProtocol.swift; sourceTree = "<group>"; };
-		AC3699A01E4F9BCB0071EBD6 /* MockPlaceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockPlaceDetailsViewModel.swift; sourceTree = "<group>"; };
 		AC3699A31E4F9C8E0071EBD6 /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
+		AC3699A51E4FB2350071EBD6 /* PlaceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewModel.swift; sourceTree = "<group>"; };
 		AC4610CF1E43C9560059D5CD /* PredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		AC4610D11E43D0980059D5CD /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		AC657B2A1E48E52A00C84B60 /* GooglePlacesConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GooglePlacesConfig.plist; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				AC36999E1E4F8A4F0071EBD6 /* PlaceDetailsViewModelProtocol.swift */,
-				AC3699A01E4F9BCB0071EBD6 /* MockPlaceDetailsViewModel.swift */,
+				AC3699A51E4FB2350071EBD6 /* PlaceDetailsViewModel.swift */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -274,7 +274,6 @@
 				ACFEEFB41E3FDACB0091680B /* Model */,
 				ACFEEFB31E3FDABE0091680B /* View Model */,
 				ACFEEFB21E3FDAB60091680B /* View */,
-				ACFEEF841E3FDAA00091680B /* AppDelegate.swift */,
 				ACFEEFB51E3FDAE40091680B /* Supporting Files */,
 			);
 			path = SwiftMVVMExample;
@@ -301,6 +300,7 @@
 		ACFEEFB21E3FDAB60091680B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ACFEEF841E3FDAA00091680B /* AppDelegate.swift */,
 				ACFEEFB61E3FDAFE0091680B /* Storyboards */,
 				AC657B451E4A507800C84B60 /* Prediction */,
 				AC3699A21E4F9C6F0071EBD6 /* Place */,
@@ -526,9 +526,9 @@
 				ACD25DF41E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */,
 				AC657B2D1E48E57100C84B60 /* GooglePlacesConfig.swift in Sources */,
 				AC36999F1E4F8A500071EBD6 /* PlaceDetailsViewModelProtocol.swift in Sources */,
-				AC3699A11E4F9BCB0071EBD6 /* MockPlaceDetailsViewModel.swift in Sources */,
 				ACFEEF851E3FDAA00091680B /* AppDelegate.swift in Sources */,
 				AC657B401E4A3D3900C84B60 /* PredictionCellViewModelProtocol.swift in Sources */,
+				AC3699A61E4FB2350071EBD6 /* PlaceDetailsViewModel.swift in Sources */,
 				AC657B301E49846000C84B60 /* PredictionSearchAPIParser.swift in Sources */,
 				AC657B3C1E4A24C200C84B60 /* PredictionCellViewModel.swift in Sources */,
 			);

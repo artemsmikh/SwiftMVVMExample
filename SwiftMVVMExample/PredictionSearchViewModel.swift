@@ -6,7 +6,7 @@
 //  Copyright © 2017 Artem Mikhailov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     var delegate: PredictionSearchViewModelDelegate?
@@ -68,9 +68,13 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     // MARK: Actions from delegate
     
     func onSelectCell(withIndex index: Int) {
+        let model = self.searchService.predictions[index]
+        let placeId = model.placeId
+        
         // Create a ViewModel for passing to place details screen
-        // TODO: Create a real VM
-        let placeDetailsViewModel: PlaceDetailsViewModelProtocol = MockPlaceDetailsViewModel()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let placeDetailsViewModel = appDelegate.preparePlaceDetailsViewModel(forPlaceId: placeId)
+        
         // Tell delegate to show place details with the created VM
         self.delegate?.predictionSearchViewModel(self, showPlaceDetails: placeDetailsViewModel)
     }

@@ -6,26 +6,45 @@
 //  Copyright © 2017 Artem Mikhailov. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol PlaceDetailsViewModelProtocol {
     var delegate: PlaceDetailsViewModelDelegate? { get set }
     
-    var title: String? { get }
-    var name: String? { get }
-    var rating: String? { get }
-    var address: String? { get }
-    var phone: String? { get }
-    var website: String? { get }
+    var titleText: String? { get }
+    
+    var showLoadingIndicator: Bool { get }
+    
+    var showError: Bool { get }
+    var errorText: String? { get }
+    
+    var showContentView: Bool { get }
+    var nameText: String? { get }
+    var ratingText: String? { get }
+    var addressText: NSAttributedString? { get }
+    var phoneText: NSAttributedString? { get }
+    var websiteText: NSAttributedString? { get }
+    
+    var showIcon: Bool { get }
     var icon: UIImage? { get }
+    
+    func loadDetails()
 }
 
 protocol PlaceDetailsViewModelDelegate {
-    func placeDetailsViewModelDidUpdateName(_ viewModel: PlaceDetailsViewModelProtocol)
-    func placeDetailsViewModelDidUpdateRating(_ viewModel: PlaceDetailsViewModelProtocol)
-    func placeDetailsViewModelDidUpdateAddress(_ viewModel: PlaceDetailsViewModelProtocol)
-    func placeDetailsViewModelDidUpdatePhone(_ viewModel: PlaceDetailsViewModelProtocol)
-    func placeDetailsViewModelDidStartLoadingIcon(_ viewModel: PlaceDetailsViewModelProtocol)
-    func placeDetailsViewModelDidFinishLoadingIcon(_ viewModel: PlaceDetailsViewModelProtocol)
+    func viewModelDidUpdateLoadingIndicatorVisibility()
+    
+    func viewModelDidUpdateContentViewVisibility()
+    
+    func viewModelDidUpdateErrorVisibility()
+    func viewModelDidUpdateErrorText()
+    
+    func viewModelDidUpdateIconVisibility()
+    func viewModelDidUpdateIconImage()
+    
+    func viewModelDidUpdateName()
+    func viewModelDidUpdateRating()
+    func viewModelDidUpdateAddress()
+    func viewModelDidUpdatePhone()
+    func viewModelDidUpdateWebsite()
 }
