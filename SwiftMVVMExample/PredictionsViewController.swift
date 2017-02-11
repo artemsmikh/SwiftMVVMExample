@@ -16,11 +16,18 @@ class PredictionsViewController: UIViewController {
     
     fileprivate let cellIdentifier = "cell"
     
+    fileprivate let seguePlaceDetails = "placeDetails"
+    
     var viewModel: PredictionSearchViewModelProtocol? {
         didSet {
             viewModel?.delegate = self
         }
     }
+    
+    fileprivate var placeDetailsViewModelToShow: PlaceDetailsViewModelProtocol? = nil
+    
+    
+    // MARK: VC lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +42,29 @@ class PredictionsViewController: UIViewController {
         updateTooltip()
         updatePredictions()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == seguePlaceDetails {
+            // Pass view model to the controller
+            if let controller = segue.destination as? PlaceDetailsViewController {
+                controller.viewModel = self.placeDetailsViewModelToShow
+            }
+        }
+    }
+    
+    
+    // MARK: Update view
     
     fileprivate func updateTooltip() {
         guard let viewModel = viewModel else {
@@ -85,6 +115,11 @@ extension PredictionsViewController: UITableViewDelegate {
         // Hide section header (view model has nothing to do with this)
         return CGFloat.leastNonzeroMagnitude
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Tell the ViewModel that prediction is selected
+        self.viewModel?.onSelectCell(withIndex: indexPath.row)
+    }
 }
 
 extension PredictionsViewController: PredictionSearchViewModelDelegate {
@@ -94,5 +129,12 @@ extension PredictionsViewController: PredictionSearchViewModelDelegate {
     
     func predictionSearchViewModelDidUpdatePredictions(_ viewModel: PredictionSearchViewModelProtocol) {
         updatePredictions()
+    }
+    
+    func predictionSearchViewModel(_ viewModel: PredictionSearchViewModelProtocol, showPlaceDetails placeDetailsViewModel: PlaceDetailsViewModelProtocol) {
+        // Show a controller with the details of the selected place
+        // We'll pass the ViewModel for that controller in prepareForSegue method
+        self.placeDetailsViewModelToShow = placeDetailsViewModel
+        self.performSegue(withIdentifier: seguePlaceDetails, sender: self)
     }
 }

@@ -19,9 +19,12 @@ protocol PredictionSearchViewModelProtocol {
     var tooltipText: String { get }
     
     var cells: [PredictionCellViewModelProtocol] { get }
+    
+    func onSelectCell(withIndex index: Int)
 }
 
 protocol PredictionSearchViewModelDelegate {
     func predictionSearchViewModelDidUpdateTooltip(_ viewModel: PredictionSearchViewModelProtocol)
     func predictionSearchViewModelDidUpdatePredictions(_ viewModel: PredictionSearchViewModelProtocol)
+    func predictionSearchViewModel(_ viewModel: PredictionSearchViewModelProtocol, showPlaceDetails placeDetailsViewModel: PlaceDetailsViewModelProtocol)
 }

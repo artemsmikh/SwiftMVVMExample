@@ -30,7 +30,12 @@ class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
         currentRequest?.cancel()
         
         createRequest { (place, error) in
-            // TODO: Save place and notify delegate
+            if let error = error {
+                self.delegate?.placeDetailsService(self, didFailToUpdate: error)
+            } else {
+                self.place = place
+                self.delegate?.placeDetailsServiceDidUpdate(self)
+            }
         }
     }
     

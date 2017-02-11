@@ -63,6 +63,17 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     fileprivate func showEmptySearchTextTooltip() {
         showTooltip(withText: "Start typing a place name and the suggestions will appear here!")
     }
+    
+    
+    // MARK: Actions from delegate
+    
+    func onSelectCell(withIndex index: Int) {
+        // Create a ViewModel for passing to place details screen
+        // TODO: Create a real VM
+        let placeDetailsViewModel: PlaceDetailsViewModelProtocol = MockPlaceDetailsViewModel()
+        // Tell delegate to show place details with the created VM
+        self.delegate?.predictionSearchViewModel(self, showPlaceDetails: placeDetailsViewModel)
+    }
 }
 
 extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
