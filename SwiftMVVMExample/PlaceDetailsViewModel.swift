@@ -22,6 +22,29 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         self.service.delegate = self
     }
     
+    
+    // MARK: UI Attributes
+    
+    fileprivate var propertyLabelFont: UIFont {
+        return UIFont.systemFont(ofSize: 16)
+    }
+    
+    fileprivate var propertyLabelColor: UIColor {
+        return UIColor.lightGray
+    }
+    
+    func propertyAttributes() -> [String: Any] {
+        return [NSFontAttributeName: propertyLabelFont,
+                NSForegroundColorAttributeName: propertyLabelColor]
+    }
+    
+    func clickablePropertyAttributes() -> [String: Any] {
+        var attributes = propertyAttributes()
+        attributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
+        return attributes
+    }
+    
+    
     // MARK: Protocol
     
     var delegate: PlaceDetailsViewModelDelegate?
@@ -82,25 +105,26 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     
     private func updateAddress() {
         if let address = model?.address {
-            self.addressText = NSAttributedString(string: address)
+            let attributes = model?.url != nil ? clickablePropertyAttributes() : propertyAttributes()
+            self.addressText = NSAttributedString(string: address, attributes: attributes)
         } else {
-            self.addressText = NSAttributedString(string: "No address specified")
+            self.addressText = NSAttributedString(string: "No address specified", attributes: propertyAttributes())
         }
     }
     
     private func updatePhone() {
         if let phone = model?.phone {
-            self.phoneText = NSAttributedString(string: phone)
+            self.phoneText = NSAttributedString(string: phone, attributes: clickablePropertyAttributes())
         } else {
-            self.phoneText = NSAttributedString(string: "No phone specified")
+            self.phoneText = NSAttributedString(string: "No phone specified", attributes: propertyAttributes())
         }
     }
     
     private func updateWebsite() {
         if let url = model?.website {
-            self.websiteText = NSAttributedString(string: url.absoluteString)
+            self.websiteText = NSAttributedString(string: url.absoluteString,  attributes: clickablePropertyAttributes())
         } else {
-            self.websiteText = NSAttributedString(string: "No website specified")
+            self.websiteText = NSAttributedString(string: "No website specified", attributes: propertyAttributes())
         }
     }
     
