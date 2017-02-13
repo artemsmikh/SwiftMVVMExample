@@ -32,59 +32,37 @@ class PlaceDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = viewModel!.titleText
+        updateView()
         
         viewModel!.loadDetails()
-        
-        updateActivityIndicator()
-        updateContentView()
-        updateErrorLabel()
     }
     
     
     // MARK: Updating UI
     
-    fileprivate func updateActivityIndicator() {
+    fileprivate func updateView() {
+        self.title = viewModel!.titleText
+        
         activityIndicator.isHidden = !viewModel!.showLoadingIndicator
-    }
-    
-    fileprivate func updateContentView() {
-        self.contentView.isHidden = !viewModel!.showContentView
-    }
-    
-    fileprivate func updateErrorLabel() {
-        self.errorLabel.isHidden = !viewModel!.showError
-        self.errorLabel.text = viewModel!.errorText
-    }
-    
-    fileprivate func updateNameLabel() {
-        self.nameLabel.text = viewModel!.nameText
-    }
-    
-    fileprivate func updateRatingLabel() {
-        self.ratingLabel.text = viewModel!.ratingText
-    }
-    
-    fileprivate func updateAddressLabel() {
-        self.addressLabel.attributedText = viewModel!.addressText
-    }
-    
-    fileprivate func updatePhoneLabel() {
-        self.phoneLabel.attributedText = viewModel!.phoneText
-    }
-    
-    fileprivate func updateWebsiteLabel() {
-        self.websiteLabel.attributedText = viewModel!.websiteText
-    }
-    
-    fileprivate func updateIcon() {
-        let showActivityIndicator = viewModel!.showIcon && viewModel!.icon == nil
-        let showImage = viewModel!.showIcon && viewModel!.icon != nil
         
-        self.iconImageView.isHidden = !showImage
-        self.iconActivityIndicator.isHidden = !showActivityIndicator
+        errorLabel.isHidden = !viewModel!.showError
+        errorLabel.text = viewModel!.errorText
         
-        if showImage {
+        contentView.isHidden = !viewModel!.showContentView
+        
+        nameLabel.text = viewModel!.nameText
+        ratingLabel.text = viewModel!.ratingText
+        addressLabel.attributedText = viewModel!.addressText
+        phoneLabel.attributedText = viewModel!.phoneText
+        websiteLabel.attributedText = viewModel!.websiteText
+        
+        let showIconActivityIndicator = viewModel!.showIcon && viewModel!.icon == nil
+        let showIcon = viewModel!.showIcon && viewModel!.icon != nil
+        
+        self.iconActivityIndicator.isHidden = !showIconActivityIndicator
+        self.iconImageView.isHidden = !showIcon
+        
+        if showIcon {
             self.iconImageView.image = viewModel!.icon
         }
     }
@@ -92,47 +70,7 @@ class PlaceDetailsViewController: UIViewController {
 
 extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {
     
-    func viewModelDidUpdateLoadingIndicatorVisibility() {
-        updateActivityIndicator()
-    }
-    
-    func viewModelDidUpdateContentViewVisibility() {
-        updateContentView()
-    }
-    
-    func viewModelDidUpdateErrorVisibility() {
-        updateErrorLabel()
-    }
-    
-    func viewModelDidUpdateErrorText() {
-        updateErrorLabel()
-    }
-    
-    func viewModelDidUpdateIconVisibility() {
-        updateIcon()
-    }
-    
-    func viewModelDidUpdateIconImage() {
-        updateIcon()
-    }
-    
-    func viewModelDidUpdateName() {
-        updateNameLabel()
-    }
-    
-    func viewModelDidUpdateRating() {
-        updateRatingLabel()
-    }
-    
-    func viewModelDidUpdateAddress() {
-        updateAddressLabel()
-    }
-    
-    func viewModelDidUpdatePhone() {
-        updatePhoneLabel()
-    }
-    
-    func viewModelDidUpdateWebsite() {
-        updateWebsiteLabel()
+    func placeDetailsViewModelUpdated(_ viewModel: PlaceDetailsViewModelProtocol) {
+        updateView()
     }
 }

@@ -32,6 +32,8 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         self.showError = false
         self.showContentView = false
         
+        delegate?.placeDetailsViewModelUpdated(self)
+        
         self.service.loadDetails()
     }
     
@@ -39,72 +41,19 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         return "Place Details"
     }
     
-    fileprivate(set) var showLoadingIndicator: Bool = false {
-        didSet {
-            delegate?.viewModelDidUpdateLoadingIndicatorVisibility()
-        }
-    }
+    fileprivate(set) var showLoadingIndicator: Bool = false
     
-    fileprivate(set) var errorText: String? {
-        didSet {
-            delegate?.viewModelDidUpdateErrorText()
-        }
-    }
+    fileprivate(set) var errorText: String?
+    fileprivate(set) var showError: Bool = false
     
-    fileprivate(set) var showError: Bool = false {
-        didSet {
-            delegate?.viewModelDidUpdateErrorVisibility()
-        }
-    }
-    
-    fileprivate(set) var showContentView: Bool = false {
-        didSet {
-            delegate?.viewModelDidUpdateContentViewVisibility()
-        }
-    }
-    
-    fileprivate(set) var nameText: String? {
-        didSet {
-            delegate?.viewModelDidUpdateName()
-        }
-    }
-    
-    fileprivate(set) var ratingText: String? {
-        didSet {
-            delegate?.viewModelDidUpdateRating()
-        }
-    }
-    
-    fileprivate(set) var addressText: NSAttributedString? {
-        didSet {
-            delegate?.viewModelDidUpdateAddress()
-        }
-    }
-    
-    fileprivate(set) var phoneText: NSAttributedString? {
-        didSet {
-            delegate?.viewModelDidUpdatePhone()
-        }
-    }
-    
-    fileprivate(set) var websiteText: NSAttributedString? {
-        didSet {
-            delegate?.viewModelDidUpdateWebsite()
-        }
-    }
-    
-    fileprivate(set) var showIcon: Bool = false {
-        didSet {
-            delegate?.viewModelDidUpdateIconVisibility()
-        }
-    }
-    
-    fileprivate(set) var icon: UIImage? {
-        didSet {
-            delegate?.viewModelDidUpdateIconImage()
-        }
-    }
-    
+    fileprivate(set) var showContentView: Bool = false
+    fileprivate(set) var nameText: String?
+    fileprivate(set) var ratingText: String?
+    fileprivate(set) var addressText: NSAttributedString?
+    fileprivate(set) var phoneText: NSAttributedString?
+    fileprivate(set) var websiteText: NSAttributedString?
+    fileprivate(set) var showIcon: Bool = false
+    fileprivate(set) var icon: UIImage?
     
     // MARK: Update model
     
@@ -114,7 +63,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         }
         // TODO: Check for URL
         
-        self.nameText = model.name
+        nameText = model.name
         
         updateRating()
         updateAddress()
@@ -167,6 +116,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
                 
                 DispatchQueue.main.async {
                     self.icon = image
+                    self.delegate?.placeDetailsViewModelUpdated(self)
                 }
             }).resume()
         } else {
@@ -193,6 +143,8 @@ extension PlaceDetailsViewModel: PlaceDetailsServiceDelegate {
         self.showError = !showContent
         self.showLoadingIndicator = !showContent
         self.showContentView = showContent
+        
+        delegate?.placeDetailsViewModelUpdated(self)
     }
     
     func placeDetailsService(_ service: PlaceDetailsServiceProtocol, didFailToUpdate error: Error) {
@@ -201,5 +153,7 @@ extension PlaceDetailsViewModel: PlaceDetailsServiceDelegate {
         self.showError = true
         self.showLoadingIndicator = false
         self.showContentView = false
+        
+        delegate?.placeDetailsViewModelUpdated(self)
     }
 }

@@ -32,19 +32,5 @@ protocol PlaceDetailsViewModelProtocol {
 }
 
 protocol PlaceDetailsViewModelDelegate {
-    func viewModelDidUpdateLoadingIndicatorVisibility()
-    
-    func viewModelDidUpdateContentViewVisibility()
-    
-    func viewModelDidUpdateErrorVisibility()
-    func viewModelDidUpdateErrorText()
-    
-    func viewModelDidUpdateIconVisibility()
-    func viewModelDidUpdateIconImage()
-    
-    func viewModelDidUpdateName()
-    func viewModelDidUpdateRating()
-    func viewModelDidUpdateAddress()
-    func viewModelDidUpdatePhone()
-    func viewModelDidUpdateWebsite()
+    func placeDetailsViewModelUpdated(_ viewModel: PlaceDetailsViewModelProtocol)
 }
