@@ -18,6 +18,15 @@ class PlaceModel {
     var address: String?
     var phone: String?
     
+    var phoneUrl: URL? {
+        if let phone = phone {
+            if let phoneUrlString = "telprompt://\(phone)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                return URL(string: phoneUrlString)
+            }
+        }
+        return nil
+    }
+    
     init(placeId: String, name: String) {
         self.placeId = placeId
         self.name = name

@@ -21,6 +21,10 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
+    private var addressTapRecognizer: UITapGestureRecognizer?
+    private var phoneTapRecognizer: UITapGestureRecognizer?
+    private var websiteTapRecognizer: UITapGestureRecognizer?
+    
     var viewModel: PlaceDetailsViewModelProtocol? {
         didSet {
             viewModel?.delegate = self
@@ -52,9 +56,10 @@ class PlaceDetailsViewController: UIViewController {
         
         nameLabel.text = viewModel!.nameText
         ratingLabel.text = viewModel!.ratingText
-        addressLabel.attributedText = viewModel!.addressText
-        phoneLabel.attributedText = viewModel!.phoneText
-        websiteLabel.attributedText = viewModel!.websiteText
+        
+        updateAddress()
+        updatePhone()
+        updateWebsite()
         
         let showIconActivityIndicator = viewModel!.showIcon && viewModel!.icon == nil
         let showIcon = viewModel!.showIcon && viewModel!.icon != nil
@@ -66,11 +71,83 @@ class PlaceDetailsViewController: UIViewController {
             self.iconImageView.image = viewModel!.icon
         }
     }
+    
+    private func updateAddress() {
+        addressLabel.attributedText = viewModel!.addressText
+        
+        if viewModel!.shouldProccessAddressClicks {
+            if addressTapRecognizer == nil {
+                addressTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onAddressClicked(_:)))
+                addressLabel.addGestureRecognizer(addressTapRecognizer!)
+                addressLabel.isUserInteractionEnabled = true
+            }
+        } else {
+            if let recognizer = addressTapRecognizer {
+                addressLabel.removeGestureRecognizer(recognizer)
+                addressTapRecognizer = nil
+            }
+        }
+    }
+    
+    private func updatePhone() {
+        phoneLabel.attributedText = viewModel!.phoneText
+        
+        if viewModel!.shouldProccessPhoneClicks {
+            if phoneTapRecognizer == nil {
+                phoneTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onPhoneClicked(_:)))
+                phoneLabel.addGestureRecognizer(phoneTapRecognizer!)
+                phoneLabel.isUserInteractionEnabled = true
+            }
+        } else {
+            if let recognizer = phoneTapRecognizer {
+                phoneLabel.removeGestureRecognizer(recognizer)
+                phoneTapRecognizer = nil
+            }
+        }
+    }
+    
+    private func updateWebsite() {
+        websiteLabel.attributedText = viewModel!.websiteText
+        
+        if viewModel!.shouldProccessWebsiteClicks {
+            if websiteTapRecognizer == nil {
+                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onWebsiteClicked(_:)))
+                websiteLabel.addGestureRecognizer(websiteTapRecognizer!)
+                websiteLabel.isUserInteractionEnabled = true
+            }
+        } else {
+            if let recognizer = websiteTapRecognizer {
+                websiteLabel.removeGestureRecognizer(recognizer)
+                websiteTapRecognizer = nil
+            }
+        }
+    }
+    
+    
+    // MARK: Actions
+    
+    @objc private func onAddressClicked(_ sender: UITapGestureRecognizer) {
+        viewModel?.onAddressClicked()
+    }
+    
+    @objc private func onPhoneClicked(_ sender: UITapGestureRecognizer) {
+        viewModel?.onPhoneClicked()
+    }
+    
+    @objc private func onWebsiteClicked(_ sender: UITapGestureRecognizer) {
+        viewModel?.onWebsiteClicked()
+    }
 }
 
 extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {
     
     func placeDetailsViewModelUpdated(_ viewModel: PlaceDetailsViewModelProtocol) {
         updateView()
+    }
+    
+    func shouldOpenLink(link: URL, from viewModel: PlaceDetailsViewModelProtocol) {
+        if (UIApplication.shared.canOpenURL(link)) {
+            UIApplication.shared.open(link, options: [:], completionHandler: nil)
+        }
     }
 }

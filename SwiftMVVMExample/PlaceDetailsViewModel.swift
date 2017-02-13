@@ -60,6 +60,24 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         self.service.loadDetails()
     }
     
+    func onPhoneClicked() {
+        if let url = model?.phoneUrl {
+            delegate?.shouldOpenLink(link: url, from: self)
+        }
+    }
+    
+    func onAddressClicked() {
+        if let url = model?.url {
+            delegate?.shouldOpenLink(link: url, from: self)
+        }
+    }
+    
+    func onWebsiteClicked() {
+        if let url = model?.website {
+            delegate?.shouldOpenLink(link: url, from: self)
+        }
+    }
+    
     var titleText: String? {
         return "Place Details"
     }
@@ -72,8 +90,20 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     fileprivate(set) var showContentView: Bool = false
     fileprivate(set) var nameText: String?
     fileprivate(set) var ratingText: String?
+    
+    var shouldProccessAddressClicks: Bool {
+        return model?.url != nil
+    }
     fileprivate(set) var addressText: NSAttributedString?
+    
+    var shouldProccessPhoneClicks: Bool {
+        return model?.phoneUrl != nil
+    }
     fileprivate(set) var phoneText: NSAttributedString?
+    
+    var shouldProccessWebsiteClicks: Bool {
+        return model?.website != nil
+    }
     fileprivate(set) var websiteText: NSAttributedString?
     fileprivate(set) var showIcon: Bool = false
     fileprivate(set) var icon: UIImage?
@@ -84,7 +114,6 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         guard let model = self.model else {
             return
         }
-        // TODO: Check for URL
         
         nameText = model.name
         
@@ -108,7 +137,8 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
             let attributes = model?.url != nil ? clickablePropertyAttributes() : propertyAttributes()
             self.addressText = NSAttributedString(string: address, attributes: attributes)
         } else {
-            self.addressText = NSAttributedString(string: "No address specified", attributes: propertyAttributes())
+            let text = model?.url != nil ? "Click to open address on the map" : "No address specified"
+            self.addressText = NSAttributedString(string: text, attributes: propertyAttributes())
         }
     }
     
