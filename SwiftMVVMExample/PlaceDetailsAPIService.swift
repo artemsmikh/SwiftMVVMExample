@@ -53,7 +53,7 @@ class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
             }
             
             // Parse correct JSON response
-            let placeDetailsParseResult = PlaceDetailsAPIParser.parsePlaceDetailsResponse(from: responseParseResult.json!)
+            let placeDetailsParseResult = PlaceDetailsAPIParser.parsePlaceDetailsResponse(from: responseParseResult.json!, config: self.config)
             
             if let error = placeDetailsParseResult.error {
                 completionHandler(nil, error)

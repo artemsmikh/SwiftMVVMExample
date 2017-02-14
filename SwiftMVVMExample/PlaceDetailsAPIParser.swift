@@ -10,14 +10,14 @@ import Foundation
 
 class PlaceDetailsAPIParser {
     
-    static func parsePlaceDetailsResponse(from response: [String: Any]) -> (result: PlaceModel?, error: Error?) {
+    static func parsePlaceDetailsResponse(from response: [String: Any], config: GooglePlacesConfig) -> (result: PlaceModel?, error: Error?) {
         // Check that json has a "result" key
         guard let info = response["result"] as? [String: Any] else {
             return (nil, GooglePlacesAPIResponseError.WrongResponseFormat)
         }
         
         // Parse place details
-        guard let placeDetails = parsePlaceDetails(from: info) else {
+        guard let placeDetails = parsePlaceDetails(from: info, config: config) else {
             return (nil, GooglePlacesAPIResponseError.WrongResponseFormat)
         }
         
@@ -25,7 +25,7 @@ class PlaceDetailsAPIParser {
         return (placeDetails, nil)
     }
     
-    private static func parsePlaceDetails(from info: [String: Any]) -> PlaceModel? {
+    private static func parsePlaceDetails(from info: [String: Any], config: GooglePlacesConfig) -> PlaceModel? {
         // Check for all necessary values
         guard let id = info["place_id"] as? String,
               let name = info["name"] as? String else {
@@ -50,6 +50,29 @@ class PlaceDetailsAPIParser {
             place.icon = URL(string: icon)
         }
         
+        if let photos = info["photos"] as? [Any] {
+            for photo in photos {
+                guard let photoInfo = photo as? [String: Any] else {
+                    continue
+                }
+                
+                guard let photoReference = photoInfo["photo_reference"] as? String else {
+                    continue
+                }
+                
+                if let url = urlFromPhotoReference(photoReference, config: config) {
+                    place.photos.append(url)
+                }
+            }
+        }
+        
         return place
+    }
+    
+    private static func urlFromPhotoReference(_ reference: String, config: GooglePlacesConfig) -> URL? {
+        if let urlString = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=\(config.maxImageSize)&photoreference=\(reference)&key=\(config.apiKey)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            return URL(string: urlString)
+        }
+        return nil
     }
 }

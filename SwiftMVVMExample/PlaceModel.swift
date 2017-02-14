@@ -17,6 +17,7 @@ class PlaceModel {
     var website: URL?
     var address: String?
     var phone: String?
+    var photos: [URL] = []
     
     var phoneUrl: URL? {
         if let phone = phone {
