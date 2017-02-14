@@ -36,6 +36,9 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SUH-B0-eCW">
+                                <rect key="frame" x="177" y="124" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -43,16 +46,19 @@
                             <constraint firstItem="aF3-3d-lfO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4GB-Vl-kaD"/>
                             <constraint firstAttribute="trailing" secondItem="aF3-3d-lfO" secondAttribute="trailing" id="8mW-s7-Xai"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aF3-3d-lfO" secondAttribute="bottom" id="Ivw-ci-pbn"/>
+                            <constraint firstItem="SUH-B0-eCW" firstAttribute="top" secondItem="hpE-mZ-S6d" secondAttribute="bottom" constant="16" id="JS7-nr-3cX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WCO-PI-cdi" secondAttribute="trailing" id="NCd-Z3-XNJ"/>
                             <constraint firstItem="aF3-3d-lfO" firstAttribute="top" secondItem="hpE-mZ-S6d" secondAttribute="bottom" id="Wcb-bb-oQ0"/>
                             <constraint firstItem="hpE-mZ-S6d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gw9-XX-ALl"/>
                             <constraint firstItem="hpE-mZ-S6d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nVv-bC-YIN"/>
                             <constraint firstItem="hpE-mZ-S6d" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rwP-Zy-Znk"/>
+                            <constraint firstItem="SUH-B0-eCW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="so3-Pi-1bk"/>
                             <constraint firstItem="WCO-PI-cdi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z5P-bc-4lT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="U6H-vG-nbe"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="SUH-B0-eCW" id="vPz-pd-oq7"/>
                         <outlet property="searchBar" destination="hpE-mZ-S6d" id="vHG-nN-O3F"/>
                         <outlet property="tableView" destination="aF3-3d-lfO" id="jdU-n8-C5D"/>
                         <outlet property="tooltipLabel" destination="WCO-PI-cdi" id="Rp6-cW-fkX"/>

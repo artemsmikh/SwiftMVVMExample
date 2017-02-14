@@ -13,6 +13,7 @@ class PredictionsViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tooltipLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     fileprivate let cellIdentifier = "cell"
     
@@ -41,6 +42,7 @@ class PredictionsViewController: UIViewController {
         
         updateTooltip()
         updatePredictions()
+        updateLoadingIndicator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,18 +69,17 @@ class PredictionsViewController: UIViewController {
     // MARK: Update view
     
     fileprivate func updateTooltip() {
-        guard let viewModel = viewModel else {
-            return
-        }
-        
-        tooltipLabel.isHidden = !viewModel.displayTooltip
-        tooltipLabel.text = viewModel.tooltipText
-
-        tableView.isHidden = !tooltipLabel.isHidden
+        tooltipLabel.isHidden = !viewModel!.displayTooltip
+        tooltipLabel.text = viewModel!.tooltipText
     }
     
     fileprivate func updatePredictions() {
+        tableView.isHidden = !viewModel!.displayTable
         tableView.reloadData()
+    }
+    
+    fileprivate func updateLoadingIndicator() {
+        activityIndicator.isHidden = !viewModel!.displayLoadingIndicator
     }
 }
 
@@ -136,5 +137,9 @@ extension PredictionsViewController: PredictionSearchViewModelDelegate {
         // We'll pass the ViewModel for that controller in prepareForSegue method
         self.placeDetailsViewModelToShow = placeDetailsViewModel
         self.performSegue(withIdentifier: seguePlaceDetails, sender: self)
+    }
+    
+    func predictionSearchViewModelDidUpdateLoadingIndicator(_ viewModel: PredictionSearchViewModelProtocol) {
+        updateLoadingIndicator()
     }
 }

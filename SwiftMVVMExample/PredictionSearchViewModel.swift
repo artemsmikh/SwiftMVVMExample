@@ -24,11 +24,18 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
         return "Search Google Places"
     }
     
+    var displayLoadingIndicator: Bool = false {
+        didSet {
+            delegate?.predictionSearchViewModelDidUpdateLoadingIndicator(self)
+        }
+    }
     var displayTooltip: Bool = false
+    var displayTable: Bool = false
     var tooltipText: String = ""
     
     var cells: [PredictionCellViewModelProtocol] = [] {
         didSet {
+            displayTable = cells.count > 0
             delegate?.predictionSearchViewModelDidUpdatePredictions(self)
         }
     }
@@ -87,24 +94,25 @@ extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
             updatedCells.append(PredictionCellViewModel(withPrediction: prediction))
         }
         self.cells = updatedCells
-        
-        if service.status == .NoResults {
-            showTooltip(withText: "We could not find this place")
-        } else if service.status == .ShortInput && searchTextIsEmpty() {
-            showEmptySearchTextTooltip()
-        } else if displayTooltip {
-            hideTooltip()
-        }
     }
     
     func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error) {
         self.cells = []
-        
-        // Don't inform view about -999 (Cancelled) error
-        if (error as NSError).code == NSURLErrorCancelled {
-            return
+    }
+    
+    func predictionSearchServiceDidUpdateStatus(_ service: PredictionSearchServiceProtocol) {
+        // Update tooltip
+        if service.status == .ShortInput {
+            showEmptySearchTextTooltip()
+        } else if service.status == .NoResults {
+            showTooltip(withText: "We could not find this place")
+        } else if service.status == .Error {
+            showTooltip(withText: "An error occured, please try again later")
+        } else if service.status == .Loading || service.status == .HasResults {
+            hideTooltip()
         }
         
-        showTooltip(withText: "An error occured, please try again later")
+        // Update loading indicator
+        displayLoadingIndicator = service.status == .Loading && cells.count == 0
     }
 }

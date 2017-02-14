@@ -14,9 +14,11 @@ protocol PredictionSearchViewModelProtocol {
     var searchText: String { get set }
     
     var searchPlaceholderText: String { get }
+    var tooltipText: String { get }
     
     var displayTooltip: Bool { get }
-    var tooltipText: String { get }
+    var displayLoadingIndicator: Bool { get }
+    var displayTable: Bool { get }
     
     var cells: [PredictionCellViewModelProtocol] { get }
     
@@ -27,4 +29,5 @@ protocol PredictionSearchViewModelDelegate {
     func predictionSearchViewModelDidUpdateTooltip(_ viewModel: PredictionSearchViewModelProtocol)
     func predictionSearchViewModelDidUpdatePredictions(_ viewModel: PredictionSearchViewModelProtocol)
     func predictionSearchViewModel(_ viewModel: PredictionSearchViewModelProtocol, showPlaceDetails placeDetailsViewModel: PlaceDetailsViewModelProtocol)
+    func predictionSearchViewModelDidUpdateLoadingIndicator(_ viewModel: PredictionSearchViewModelProtocol)
 }

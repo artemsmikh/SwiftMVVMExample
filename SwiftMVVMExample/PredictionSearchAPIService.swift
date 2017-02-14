@@ -22,7 +22,12 @@ class PredictionSearchAPIService: PredictionSearchServiceProtocol {
         }
     }
     
-    private(set) var status: PredictionSearchServiceStatus = .ShortInput
+    private(set) var status: PredictionSearchServiceStatus = .ShortInput {
+        didSet {
+            // Notify delegate
+            delegate?.predictionSearchServiceDidUpdateStatus(self)
+        }
+    }
     
     private(set) var predictions: [PredictionModel] = []
     
@@ -70,7 +75,7 @@ class PredictionSearchAPIService: PredictionSearchServiceProtocol {
             if let error = error {
                 // In case of an error we set the 'HasResults' status to distinguish it
                 // from the case when there wasn't any error and results are really empty
-                self.status = .HasResults
+                self.status = .Error
                 // If there was an error - notify delegate about it
                 self.delegate?.predictionSearchService(self, didFailToUpdatePredictions: error)
             } else {

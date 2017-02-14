@@ -22,9 +22,11 @@ enum PredictionSearchServiceStatus {
     case Loading
     case HasResults
     case NoResults
+    case Error
 }
 
 protocol PredictionSearchServiceDelegate {
     func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchServiceProtocol)
+    func predictionSearchServiceDidUpdateStatus(_ service: PredictionSearchServiceProtocol)
     func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error)
 }
