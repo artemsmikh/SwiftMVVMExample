@@ -13,7 +13,7 @@ class PredictionSearchAPIService: PredictionSearchServiceProtocol {
     let minimalSearchTextLength = 1
     let minimumTimeIntervalBetweenRequests: TimeInterval = 0.5
     
-    var delegate: PredictionSearchServiceDelegate?
+    weak var delegate: PredictionSearchServiceDelegate?
     
     var searchText: String = "" {
         didSet {

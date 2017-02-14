@@ -9,14 +9,14 @@
 import Foundation
 
 protocol PlaceDetailsServiceProtocol {
-    var delegate: PlaceDetailsServiceDelegate? { get set }
+    weak var delegate: PlaceDetailsServiceDelegate? { get set }
     
     var place: PlaceModel? { get }
     
     func loadDetails()
 }
 
-protocol PlaceDetailsServiceDelegate {
+protocol PlaceDetailsServiceDelegate: class {
     func placeDetailsServiceDidUpdate(_ service: PlaceDetailsServiceProtocol)
     func placeDetailsService(_ service: PlaceDetailsServiceProtocol, didFailToUpdate error: Error)
 }

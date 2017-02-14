@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PredictionSearchViewModelProtocol {
-    var delegate: PredictionSearchViewModelDelegate? { get set }
+    weak var delegate: PredictionSearchViewModelDelegate? { get set }
     
     var searchText: String { get set }
     
@@ -25,7 +25,7 @@ protocol PredictionSearchViewModelProtocol {
     func onSelectCell(withIndex index: Int)
 }
 
-protocol PredictionSearchViewModelDelegate {
+protocol PredictionSearchViewModelDelegate: class {
     func predictionSearchViewModelDidUpdateTooltip(_ viewModel: PredictionSearchViewModelProtocol)
     func predictionSearchViewModelDidUpdatePredictions(_ viewModel: PredictionSearchViewModelProtocol)
     func predictionSearchViewModel(_ viewModel: PredictionSearchViewModelProtocol, showPlaceDetails placeDetailsViewModel: PlaceDetailsViewModelProtocol)

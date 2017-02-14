@@ -9,7 +9,7 @@
 import UIKit
 
 class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
-    var delegate: PredictionSearchViewModelDelegate?
+    weak var delegate: PredictionSearchViewModelDelegate?
     
     var searchText: String {
         get {

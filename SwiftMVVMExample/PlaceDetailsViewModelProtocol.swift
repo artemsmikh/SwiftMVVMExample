@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PlaceDetailsViewModelProtocol {
-    var delegate: PlaceDetailsViewModelDelegate? { get set }
+    weak var delegate: PlaceDetailsViewModelDelegate? { get set }
     
     var titleText: String? { get }
     
@@ -37,13 +37,16 @@ protocol PlaceDetailsViewModelProtocol {
     var showIcon: Bool { get }
     var icon: UIImage? { get }
     
+    var photos: [PlacePhotoViewModelProtocol] { get }
+    var displayPhotos: Bool { get }
+    
     func loadDetails()
     func onAddressClicked()
     func onPhoneClicked()
     func onWebsiteClicked()
 }
 
-protocol PlaceDetailsViewModelDelegate {
+protocol PlaceDetailsViewModelDelegate: class {
     func placeDetailsViewModelUpdated(_ viewModel: PlaceDetailsViewModelProtocol)
     func shouldOpenLink(link: URL, from viewModel: PlaceDetailsViewModelProtocol)
 }

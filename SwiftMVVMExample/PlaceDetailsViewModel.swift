@@ -47,7 +47,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     
     // MARK: Protocol
     
-    var delegate: PlaceDetailsViewModelDelegate?
+    weak var delegate: PlaceDetailsViewModelDelegate?
     
     func loadDetails() {
         // Show loading indicator and hide the other components
@@ -118,6 +118,13 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     fileprivate(set) var showIcon: Bool = false
     fileprivate(set) var icon: UIImage?
     
+    fileprivate(set) var photos: [PlacePhotoViewModelProtocol] = []
+    
+    var displayPhotos: Bool {
+        return photos.count > 0
+    }
+    
+    
     // MARK: Update model
     
     private func updateViewModel() {
@@ -132,6 +139,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         updatePhone()
         updateWebsite()
         updateIcon()
+        updatePhotos()
     }
     
     private func updateRating() {
@@ -188,6 +196,19 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
             }).resume()
         } else {
             self.showIcon = false
+        }
+    }
+    
+    private func updatePhotos() {
+        photos.removeAll()
+        
+        guard let model = model else {
+            return
+        }
+        
+        for photoUrl in model.photos {
+            let photoViewModel = PlacePhotoViewModel(with: photoUrl)
+            photos.append(photoViewModel)
         }
     }
     

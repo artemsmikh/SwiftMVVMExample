@@ -11,7 +11,7 @@ import Alamofire
 
 class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
     
-    var delegate: PlaceDetailsServiceDelegate?
+    weak var delegate: PlaceDetailsServiceDelegate?
     
     private(set) var place: PlaceModel? = nil
     

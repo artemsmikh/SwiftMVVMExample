@@ -9,6 +9,8 @@
 import UIKit
 
 class PlaceDetailsViewController: UIViewController {
+    let photoCellIdentifier = "photoCell"
+    let iconBackgroundCornerRadius: CGFloat = 7
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var iconActivityIndicator: UIActivityIndicatorView!
@@ -20,10 +22,13 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconBackgroundView: UIView!
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var websiteView: UIView!
+    @IBOutlet weak var photosCollectionView: UICollectionView!
     
+    @IBOutlet weak var constraintPhotosZeroHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintPhoneZeroHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintWebsiteZeroHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintAddressZeroHeight: NSLayoutConstraint!
@@ -31,6 +36,7 @@ class PlaceDetailsViewController: UIViewController {
     private var addressTapRecognizer: UITapGestureRecognizer?
     private var phoneTapRecognizer: UITapGestureRecognizer?
     private var websiteTapRecognizer: UITapGestureRecognizer?
+    private var iconTapRecognizer: UITapGestureRecognizer?
     
     var viewModel: PlaceDetailsViewModelProtocol? {
         didSet {
@@ -42,6 +48,9 @@ class PlaceDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photosCollectionView.delegate = self
+        photosCollectionView.dataSource = self
         
         updateView()
         
@@ -64,6 +73,7 @@ class PlaceDetailsViewController: UIViewController {
         nameLabel.text = viewModel!.nameText
         ratingLabel.text = viewModel!.ratingText
         
+        updatePhotos()
         updateAddress()
         updatePhone()
         updateWebsite()
@@ -73,10 +83,30 @@ class PlaceDetailsViewController: UIViewController {
         
         self.iconActivityIndicator.isHidden = !showIconActivityIndicator
         self.iconImageView.isHidden = !showIcon
+        self.iconBackgroundView.isHidden = self.iconImageView.isHidden
+        // Round icon background corners
+        self.iconBackgroundView.layer.cornerRadius = iconBackgroundCornerRadius
         
         if showIcon {
             self.iconImageView.image = viewModel!.icon
+            
+            // Add tap gesture recognizer to icon (show map on click)
+            if iconTapRecognizer == nil {
+                iconTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onWebsiteClicked(_:)))
+                self.iconImageView.addGestureRecognizer(iconTapRecognizer!)
+            }
         }
+    }
+    
+    private func updatePhotos() {
+        guard viewModel!.displayPhotos else {
+            constraintPhotosZeroHeight.priority = UILayoutPriorityDefaultHigh
+            photosCollectionView.isHidden = true
+            return
+        }
+        constraintPhotosZeroHeight.priority = UILayoutPriorityDefaultLow
+        photosCollectionView.isHidden = false
+        photosCollectionView.reloadData()
     }
     
     private func updateAddress() {
@@ -142,7 +172,7 @@ class PlaceDetailsViewController: UIViewController {
         
         if viewModel!.shouldProccessWebsiteClicks {
             if websiteTapRecognizer == nil {
-                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onWebsiteClicked(_:)))
+                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onAddressClicked(_:)))
                 websiteLabel.addGestureRecognizer(websiteTapRecognizer!)
                 websiteLabel.isUserInteractionEnabled = true
             }
@@ -170,6 +200,8 @@ class PlaceDetailsViewController: UIViewController {
     }
 }
 
+
+// MARK: VM delegate
 extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {
     
     func placeDetailsViewModelUpdated(_ viewModel: PlaceDetailsViewModelProtocol) {
@@ -180,5 +212,33 @@ extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {
         if (UIApplication.shared.canOpenURL(link)) {
             UIApplication.shared.open(link, options: [:], completionHandler: nil)
         }
+    }
+}
+
+
+// MARK: Collection view delegate
+
+extension PlaceDetailsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+    }
+}
+
+
+// MARK: Collection view data source
+
+extension PlaceDetailsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel!.photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: PlaceDetailsPhotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PlaceDetailsPhotoCell
+        
+        var photoViewModel = self.viewModel!.photos[indexPath.row]
+        photoViewModel.delegate = nil
+        cell.configure(&photoViewModel)
+        
+        return cell
     }
 }

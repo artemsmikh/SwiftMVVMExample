@@ -11,7 +11,7 @@ import Foundation
 protocol PredictionSearchServiceProtocol {
     var status: PredictionSearchServiceStatus { get }
     
-    var delegate: PredictionSearchServiceDelegate? { get set }
+    weak var delegate: PredictionSearchServiceDelegate? { get set }
     
     var searchText: String { get set }
     var predictions: [PredictionModel] { get }
@@ -25,7 +25,7 @@ enum PredictionSearchServiceStatus {
     case Error
 }
 
-protocol PredictionSearchServiceDelegate {
+protocol PredictionSearchServiceDelegate: class {
     func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchServiceProtocol)
     func predictionSearchServiceDidUpdateStatus(_ service: PredictionSearchServiceProtocol)
     func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error)
