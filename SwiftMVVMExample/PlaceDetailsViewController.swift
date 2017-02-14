@@ -20,6 +20,13 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var addressView: UIView!
+    @IBOutlet weak var phoneView: UIView!
+    @IBOutlet weak var websiteView: UIView!
+    
+    @IBOutlet weak var constraintPhoneZeroHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintWebsiteZeroHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintAddressZeroHeight: NSLayoutConstraint!
     
     private var addressTapRecognizer: UITapGestureRecognizer?
     private var phoneTapRecognizer: UITapGestureRecognizer?
@@ -73,6 +80,14 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     private func updateAddress() {
+        guard viewModel!.displayAddress else {
+            constraintAddressZeroHeight.priority = UILayoutPriorityDefaultHigh
+            addressView.isHidden = true
+            return
+        }
+        constraintAddressZeroHeight.priority = UILayoutPriorityDefaultLow
+        addressView.isHidden = false
+        
         addressLabel.attributedText = viewModel!.addressText
         
         if viewModel!.shouldProccessAddressClicks {
@@ -90,6 +105,14 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     private func updatePhone() {
+        guard viewModel!.displayPhone else {
+            constraintPhoneZeroHeight.priority = UILayoutPriorityDefaultHigh
+            phoneView.isHidden = true
+            return
+        }
+        constraintPhoneZeroHeight.priority = UILayoutPriorityDefaultLow
+        phoneView.isHidden = false
+        
         phoneLabel.attributedText = viewModel!.phoneText
         
         if viewModel!.shouldProccessPhoneClicks {
@@ -107,6 +130,14 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     private func updateWebsite() {
+        guard viewModel!.displayWebsite else {
+            constraintWebsiteZeroHeight.priority = UILayoutPriorityDefaultHigh
+            websiteView.isHidden = true
+            return
+        }
+        constraintWebsiteZeroHeight.priority = UILayoutPriorityDefaultLow
+        websiteView.isHidden = false
+        
         websiteLabel.attributedText = viewModel!.websiteText
         
         if viewModel!.shouldProccessWebsiteClicks {

@@ -30,7 +30,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     }
     
     fileprivate var propertyLabelColor: UIColor {
-        return UIColor.lightGray
+        return UIColor.gray
     }
     
     func propertyAttributes() -> [String: Any] {
@@ -94,17 +94,27 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     var shouldProccessAddressClicks: Bool {
         return model?.url != nil
     }
+    var displayAddress: Bool {
+        return addressText != nil
+    }
     fileprivate(set) var addressText: NSAttributedString?
     
     var shouldProccessPhoneClicks: Bool {
         return model?.phoneUrl != nil
+    }
+    var displayPhone: Bool {
+        return phoneText != nil
     }
     fileprivate(set) var phoneText: NSAttributedString?
     
     var shouldProccessWebsiteClicks: Bool {
         return model?.website != nil
     }
+    var displayWebsite: Bool {
+        return websiteText != nil
+    }
     fileprivate(set) var websiteText: NSAttributedString?
+    
     fileprivate(set) var showIcon: Bool = false
     fileprivate(set) var icon: UIImage?
     
@@ -137,8 +147,11 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
             let attributes = model?.url != nil ? clickablePropertyAttributes() : propertyAttributes()
             self.addressText = NSAttributedString(string: address, attributes: attributes)
         } else {
-            let text = model?.url != nil ? "Click to open address on the map" : "No address specified"
-            self.addressText = NSAttributedString(string: text, attributes: propertyAttributes())
+            if model?.url != nil {
+                self.addressText = NSAttributedString(string: "Click to open address on the map", attributes: propertyAttributes())
+            } else {
+                self.addressText = nil
+            }
         }
     }
     
@@ -146,7 +159,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         if let phone = model?.phone {
             self.phoneText = NSAttributedString(string: phone, attributes: clickablePropertyAttributes())
         } else {
-            self.phoneText = NSAttributedString(string: "No phone specified", attributes: propertyAttributes())
+            self.phoneText = nil
         }
     }
     
@@ -154,7 +167,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         if let url = model?.website {
             self.websiteText = NSAttributedString(string: url.absoluteString,  attributes: clickablePropertyAttributes())
         } else {
-            self.websiteText = NSAttributedString(string: "No website specified", attributes: propertyAttributes())
+            self.websiteText = nil
         }
     }
     

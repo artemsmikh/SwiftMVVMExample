@@ -23,12 +23,15 @@ protocol PlaceDetailsViewModelProtocol {
     var ratingText: String? { get }
     
     var shouldProccessAddressClicks: Bool { get }
+    var displayAddress: Bool { get }
     var addressText: NSAttributedString? { get }
     
     var shouldProccessPhoneClicks: Bool { get }
+    var displayPhone: Bool { get }
     var phoneText: NSAttributedString? { get }
     
     var shouldProccessWebsiteClicks: Bool { get }
+    var displayWebsite: Bool { get }
     var websiteText: NSAttributedString? { get }
     
     var showIcon: Bool { get }
