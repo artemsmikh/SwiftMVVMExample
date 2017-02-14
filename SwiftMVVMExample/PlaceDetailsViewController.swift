@@ -92,7 +92,7 @@ class PlaceDetailsViewController: UIViewController {
             
             // Add tap gesture recognizer to icon (show map on click)
             if iconTapRecognizer == nil {
-                iconTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onWebsiteClicked(_:)))
+                iconTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAddressClicked(_:)))
                 self.iconImageView.addGestureRecognizer(iconTapRecognizer!)
             }
         }
@@ -172,7 +172,7 @@ class PlaceDetailsViewController: UIViewController {
         
         if viewModel!.shouldProccessWebsiteClicks {
             if websiteTapRecognizer == nil {
-                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onAddressClicked(_:)))
+                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onWebsiteClicked(_:)))
                 websiteLabel.addGestureRecognizer(websiteTapRecognizer!)
                 websiteLabel.isUserInteractionEnabled = true
             }
