@@ -32,6 +32,7 @@
 		AC657B5E1E4BBD3200C84B60 /* PlaceDetailsAPIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B5D1E4BBD3100C84B60 /* PlaceDetailsAPIParser.swift */; };
 		ACBED5F51E54B56B00E1BBA3 /* PredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBED5F41E54B56B00E1BBA3 /* PredictionCell.swift */; };
 		ACBED5FA1E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBED5F91E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift */; };
+		ACBED5FC1E54DF2500E1BBA3 /* GooglePlacesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B5B1E4BB70A00C84B60 /* GooglePlacesError.swift */; };
 		ACD25DF41E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DF81E47AAD200F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
@@ -42,19 +43,11 @@
 		ACFEEF8A1E3FDAA00091680B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF881E3FDAA00091680B /* Main.storyboard */; };
 		ACFEEF8C1E3FDAA00091680B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF8B1E3FDAA00091680B /* Assets.xcassets */; };
 		ACFEEF8F1E3FDAA00091680B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEEF8D1E3FDAA00091680B /* LaunchScreen.storyboard */; };
-		ACFEEFA51E3FDAA00091680B /* SwiftMVVMExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEEFA41E3FDAA00091680B /* SwiftMVVMExampleUITests.swift */; };
 		ACFEEFB91E3FDFF00091680B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFEEFB81E3FDFF00091680B /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		ACFEEF961E3FDAA00091680B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ACFEEF791E3FDAA00091680B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ACFEEF801E3FDAA00091680B;
-			remoteInfo = SwiftMVVMExample;
-		};
-		ACFEEFA11E3FDAA00091680B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ACFEEF791E3FDAA00091680B /* Project object */;
 			proxyType = 1;
@@ -99,9 +92,6 @@
 		ACFEEF901E3FDAA00091680B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACFEEF951E3FDAA00091680B /* SwiftMVVMExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMVVMExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEEF9B1E3FDAA00091680B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACFEEFA01E3FDAA00091680B /* SwiftMVVMExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMVVMExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACFEEFA41E3FDAA00091680B /* SwiftMVVMExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMVVMExampleUITests.swift; sourceTree = "<group>"; };
-		ACFEEFA61E3FDAA00091680B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACFEEFB81E3FDFF00091680B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,13 +109,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD25DFD1E47C27E00F3E3AB /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACFEEF9D1E3FDAA00091680B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +258,6 @@
 			children = (
 				ACFEEF831E3FDAA00091680B /* SwiftMVVMExample */,
 				ACFEEF981E3FDAA00091680B /* SwiftMVVMExampleTests */,
-				ACFEEFA31E3FDAA00091680B /* SwiftMVVMExampleUITests */,
 				ACFEEF821E3FDAA00091680B /* Products */,
 				ACFEEFB71E3FDFF00091680B /* Frameworks */,
 			);
@@ -286,7 +268,6 @@
 			children = (
 				ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */,
 				ACFEEF951E3FDAA00091680B /* SwiftMVVMExampleTests.xctest */,
-				ACFEEFA01E3FDAA00091680B /* SwiftMVVMExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,15 +290,6 @@
 				ACFEEF9B1E3FDAA00091680B /* Info.plist */,
 			);
 			path = SwiftMVVMExampleTests;
-			sourceTree = "<group>";
-		};
-		ACFEEFA31E3FDAA00091680B /* SwiftMVVMExampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ACFEEFA41E3FDAA00091680B /* SwiftMVVMExampleUITests.swift */,
-				ACFEEFA61E3FDAA00091680B /* Info.plist */,
-			);
-			path = SwiftMVVMExampleUITests;
 			sourceTree = "<group>";
 		};
 		ACFEEFB21E3FDAB60091680B /* View */ = {
@@ -416,24 +388,6 @@
 			productReference = ACFEEF951E3FDAA00091680B /* SwiftMVVMExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ACFEEF9F1E3FDAA00091680B /* SwiftMVVMExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ACFEEFAF1E3FDAA00091680B /* Build configuration list for PBXNativeTarget "SwiftMVVMExampleUITests" */;
-			buildPhases = (
-				ACFEEF9C1E3FDAA00091680B /* Sources */,
-				ACFEEF9D1E3FDAA00091680B /* Frameworks */,
-				ACFEEF9E1E3FDAA00091680B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ACFEEFA21E3FDAA00091680B /* PBXTargetDependency */,
-			);
-			name = SwiftMVVMExampleUITests;
-			productName = SwiftMVVMExampleUITests;
-			productReference = ACFEEFA01E3FDAA00091680B /* SwiftMVVMExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -451,13 +405,7 @@
 					};
 					ACFEEF941E3FDAA00091680B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5A957QL4K9;
-						ProvisioningStyle = Automatic;
-						TestTargetID = ACFEEF801E3FDAA00091680B;
-					};
-					ACFEEF9F1E3FDAA00091680B = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5A957QL4K9;
+						DevelopmentTeam = L46M9SVPFU;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ACFEEF801E3FDAA00091680B;
 					};
@@ -478,7 +426,6 @@
 			targets = (
 				ACFEEF801E3FDAA00091680B /* SwiftMVVMExample */,
 				ACFEEF941E3FDAA00091680B /* SwiftMVVMExampleTests */,
-				ACFEEF9F1E3FDAA00091680B /* SwiftMVVMExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -497,13 +444,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		ACFEEF931E3FDAA00091680B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACFEEF9E1E3FDAA00091680B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -569,15 +509,8 @@
 				ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */,
 				ACD25DF81E47AAD200F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */,
 				AC657B351E4987E300C84B60 /* PredictionSearchAPIParserTest.swift in Sources */,
+				ACBED5FC1E54DF2500E1BBA3 /* GooglePlacesError.swift in Sources */,
 				AC657B361E49880D00C84B60 /* PredictionSearchAPIParser.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACFEEF9C1E3FDAA00091680B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ACFEEFA51E3FDAA00091680B /* SwiftMVVMExampleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,11 +521,6 @@
 			isa = PBXTargetDependency;
 			target = ACFEEF801E3FDAA00091680B /* SwiftMVVMExample */;
 			targetProxy = ACFEEF961E3FDAA00091680B /* PBXContainerItemProxy */;
-		};
-		ACFEEFA21E3FDAA00091680B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ACFEEF801E3FDAA00091680B /* SwiftMVVMExample */;
-			targetProxy = ACFEEFA11E3FDAA00091680B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -750,7 +678,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 5A957QL4K9;
+				DEVELOPMENT_TEAM = L46M9SVPFU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -769,7 +697,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 5A957QL4K9;
+				DEVELOPMENT_TEAM = L46M9SVPFU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -780,34 +708,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftMVVMExample.app/SwiftMVVMExample";
-			};
-			name = Release;
-		};
-		ACFEEFB01E3FDAA00091680B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 5A957QL4K9;
-				INFOPLIST_FILE = SwiftMVVMExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.artemsmikh.SwiftMVVMExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = SwiftMVVMExample;
-			};
-			name = Debug;
-		};
-		ACFEEFB11E3FDAA00091680B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 5A957QL4K9;
-				INFOPLIST_FILE = SwiftMVVMExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.artemsmikh.SwiftMVVMExampleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = SwiftMVVMExample;
 			};
 			name = Release;
 		};
@@ -837,15 +737,6 @@
 			buildConfigurations = (
 				ACFEEFAD1E3FDAA00091680B /* Debug */,
 				ACFEEFAE1E3FDAA00091680B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ACFEEFAF1E3FDAA00091680B /* Build configuration list for PBXNativeTarget "SwiftMVVMExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ACFEEFB01E3FDAA00091680B /* Debug */,
-				ACFEEFB11E3FDAA00091680B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
