@@ -10,39 +10,32 @@ import UIKit
 
 protocol PlaceDetailsViewModelProtocol {
     weak var delegate: PlaceDetailsViewModelDelegate? { get set }
+        
+    var showLoadingIndicator: Bool { get }
+    var showError: Bool { get }
+    var showContentView: Bool { get }
     
     var titleText: String? { get }
-    
-    var showLoadingIndicator: Bool { get }
-    
-    var showError: Bool { get }
     var errorText: String? { get }
-    
-    var showContentView: Bool { get }
     var nameText: String? { get }
-    
-    var displayRating: Bool { get }
     var ratingText: String? { get }
     
     var shouldProccessAddressClicks: Bool { get }
-    var displayAddress: Bool { get }
     var addressText: NSAttributedString? { get }
     
     var shouldProccessPhoneClicks: Bool { get }
-    var displayPhone: Bool { get }
     var phoneText: NSAttributedString? { get }
     
     var shouldProccessWebsiteClicks: Bool { get }
-    var displayWebsite: Bool { get }
     var websiteText: NSAttributedString? { get }
     
     var showIcon: Bool { get }
     var icon: UIImage? { get }
     
     var photos: [PlacePhotoViewModelProtocol] { get }
-    var displayPhotos: Bool { get }
     
     func loadDetails()
+    
     func onAddressClicked()
     func onPhoneClicked()
     func onWebsiteClicked()

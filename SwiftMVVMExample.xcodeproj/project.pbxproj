@@ -141,10 +141,9 @@
 		AC36999D1E4F8A370071EBD6 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				ACBED5F81E54CAFE00E1BBA3 /* Photos */,
 				AC36999E1E4F8A4F0071EBD6 /* PlaceDetailsViewModelProtocol.swift */,
 				AC3699A51E4FB2350071EBD6 /* PlaceDetailsViewModel.swift */,
-				AC3699C01E53A3C10071EBD6 /* PlacePhotoViewModelProtocol.swift */,
-				AC3699C21E53A49E0071EBD6 /* PlacePhotoViewModel.swift */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -152,8 +151,8 @@
 		AC3699A21E4F9C6F0071EBD6 /* Place */ = {
 			isa = PBXGroup;
 			children = (
-				AC3699C51E53A99F0071EBD6 /* PlaceDetailsPhotoCell.swift */,
 				AC3699A31E4F9C8E0071EBD6 /* PlaceDetailsViewController.swift */,
+				AC3699C51E53A99F0071EBD6 /* PlaceDetailsPhotoCell.swift */,
 			);
 			name = Place;
 			sourceTree = "<group>";
@@ -257,6 +256,15 @@
 				AC657B5B1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift */,
 			);
 			name = "Google Places API";
+			sourceTree = "<group>";
+		};
+		ACBED5F81E54CAFE00E1BBA3 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				AC3699C01E53A3C10071EBD6 /* PlacePhotoViewModelProtocol.swift */,
+				AC3699C21E53A49E0071EBD6 /* PlacePhotoViewModel.swift */,
+			);
+			name = Photos;
 			sourceTree = "<group>";
 		};
 		ACFEEF781E3FDAA00091680B = {

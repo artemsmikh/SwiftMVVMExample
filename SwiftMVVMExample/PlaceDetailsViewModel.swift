@@ -8,46 +8,64 @@
 
 import UIKit
 
-class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
-    
-    fileprivate var service: PlaceDetailsServiceProtocol
-    fileprivate var model: PlaceModel? = nil {
-        didSet {
-            updateViewModel()
-        }
-    }
+final class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     
     init(withService service: PlaceDetailsServiceProtocol) {
         self.service = service
         self.service.delegate = self
     }
     
+    fileprivate var service: PlaceDetailsServiceProtocol
     
-    // MARK: UI Attributes
-    
-    fileprivate var propertyLabelFont: UIFont {
-        return UIFont.systemFont(ofSize: 16)
-    }
-    
-    fileprivate var propertyLabelColor: UIColor {
-        return UIColor.gray
-    }
-    
-    func propertyAttributes() -> [String: Any] {
-        return [NSFontAttributeName: propertyLabelFont,
-                NSForegroundColorAttributeName: propertyLabelColor]
-    }
-    
-    func clickablePropertyAttributes() -> [String: Any] {
-        var attributes = propertyAttributes()
-        attributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
-        return attributes
+    fileprivate var model: PlaceModel? = nil {
+        didSet {
+            updateViewModel()
+        }
     }
     
     
-    // MARK: Protocol
+    // MARK: Constants
+    
+    fileprivate let defaultError = "An error occured, please try again later"
+    
+    
+    // MARK: Protocol properties
     
     weak var delegate: PlaceDetailsViewModelDelegate?
+    
+    fileprivate(set) var showLoadingIndicator: Bool = false
+    fileprivate(set) var showError: Bool = false
+    fileprivate(set) var showContentView: Bool = false
+    
+    var titleText: String? {
+        return "Place Details"
+    }
+    fileprivate(set) var errorText: String?
+    fileprivate(set) var nameText: String?    
+    fileprivate(set) var ratingText: String?
+    
+    var shouldProccessAddressClicks: Bool {
+        return model?.url != nil
+    }
+    fileprivate(set) var addressText: NSAttributedString?
+    
+    var shouldProccessPhoneClicks: Bool {
+        return model?.phoneUrl != nil
+    }
+    fileprivate(set) var phoneText: NSAttributedString?
+    
+    var shouldProccessWebsiteClicks: Bool {
+        return model?.website != nil
+    }
+    fileprivate(set) var websiteText: NSAttributedString?
+    
+    fileprivate(set) var showIcon: Bool = false
+    fileprivate(set) var icon: UIImage?
+    
+    fileprivate(set) var photos: [PlacePhotoViewModelProtocol] = []
+    
+    
+    // MARK: Protocol functions
     
     func loadDetails() {
         // Show loading indicator and hide the other components
@@ -77,61 +95,39 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
             delegate?.shouldOpenLink(link: url, from: self)
         }
     }
+}
+
+
+// MARK: UI attributes
+
+extension PlaceDetailsViewModel {
     
-    var titleText: String? {
-        return "Place Details"
+    fileprivate var propertyLabelFont: UIFont {
+        return UIFont.systemFont(ofSize: 16)
     }
     
-    fileprivate(set) var showLoadingIndicator: Bool = false
-    
-    fileprivate(set) var errorText: String?
-    fileprivate(set) var showError: Bool = false
-    
-    fileprivate(set) var showContentView: Bool = false
-    fileprivate(set) var nameText: String?
-    
-    var displayRating: Bool {
-        return ratingText != nil
-    }
-    fileprivate(set) var ratingText: String?
-    
-    var shouldProccessAddressClicks: Bool {
-        return model?.url != nil
-    }
-    var displayAddress: Bool {
-        return addressText != nil
-    }
-    fileprivate(set) var addressText: NSAttributedString?
-    
-    var shouldProccessPhoneClicks: Bool {
-        return model?.phoneUrl != nil
-    }
-    var displayPhone: Bool {
-        return phoneText != nil
-    }
-    fileprivate(set) var phoneText: NSAttributedString?
-    
-    var shouldProccessWebsiteClicks: Bool {
-        return model?.website != nil
-    }
-    var displayWebsite: Bool {
-        return websiteText != nil
-    }
-    fileprivate(set) var websiteText: NSAttributedString?
-    
-    fileprivate(set) var showIcon: Bool = false
-    fileprivate(set) var icon: UIImage?
-    
-    fileprivate(set) var photos: [PlacePhotoViewModelProtocol] = []
-    
-    var displayPhotos: Bool {
-        return photos.count > 0
+    fileprivate var propertyLabelColor: UIColor {
+        return UIColor.gray
     }
     
+    func propertyAttributes() -> [String: Any] {
+        return [NSFontAttributeName: propertyLabelFont,
+                NSForegroundColorAttributeName: propertyLabelColor]
+    }
     
-    // MARK: Update model
+    func clickablePropertyAttributes() -> [String: Any] {
+        var attributes = propertyAttributes()
+        attributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
+        return attributes
+    }
+}
+
+
+// MARK: Updating UI
+
+extension PlaceDetailsViewModel {
     
-    private func updateViewModel() {
+    fileprivate func updateViewModel() {
         guard let model = model else {
             return
         }
@@ -215,26 +211,24 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
             photos.append(photoViewModel)
         }
     }
-    
-    // MARK: Other
-    
-    fileprivate let defaultError = "An error occured, please try again later"
 }
 
+
+// MARK: PlaceDetailsServiceDelegate
 extension PlaceDetailsViewModel: PlaceDetailsServiceDelegate {
     func placeDetailsServiceDidUpdate(_ service: PlaceDetailsServiceProtocol) {
         // Check that model is exists
-        var showContent = false
+        var isShowingContent = false
         if let model = service.place {
-            showContent = true
+            isShowingContent = true
             self.model = model
         } else {
             errorText = defaultError
         }
         
-        showError = !showContent
-        showLoadingIndicator = !showContent
-        showContentView = showContent
+        showError = !isShowingContent
+        showLoadingIndicator = !isShowingContent
+        showContentView = isShowingContent
         
         delegate?.placeDetailsViewModelUpdated(self)
     }

@@ -8,9 +8,7 @@
 
 import UIKit
 
-class PlaceDetailsViewController: UIViewController {
-    let photoCellIdentifier = "photoCell"
-    let iconBackgroundCornerRadius: CGFloat = 7
+final class PlaceDetailsViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var iconActivityIndicator: UIActivityIndicatorView!
@@ -34,6 +32,9 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var constraintAddressZeroHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintRatingBottom: NSLayoutConstraint!
     
+    let photoCellIdentifier = "photoCell"
+    let iconBackgroundCornerRadius: CGFloat = 7
+    
     private var addressTapRecognizer: UITapGestureRecognizer?
     private var phoneTapRecognizer: UITapGestureRecognizer?
     private var websiteTapRecognizer: UITapGestureRecognizer?
@@ -44,6 +45,7 @@ class PlaceDetailsViewController: UIViewController {
             viewModel?.delegate = self
         }
     }
+    
     
     // MARK: VC lifecycle
     
@@ -100,29 +102,31 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     private func updateRating() {
-        guard viewModel!.displayRating else {
+        guard let ratingText = viewModel!.ratingText else {
             constraintRatingBottom.priority = UILayoutPriorityDefaultLow
             ratingLabel.isHidden = true
             return
         }
         constraintRatingBottom.priority = UILayoutPriorityDefaultHigh
         ratingLabel.isHidden = false
-        ratingLabel.text = viewModel!.ratingText
+        
+        ratingLabel.text = ratingText
     }
     
     private func updatePhotos() {
-        guard viewModel!.displayPhotos else {
+        guard viewModel!.photos.count > 0 else {
             constraintPhotosZeroHeight.priority = UILayoutPriorityDefaultHigh
             photosCollectionView.isHidden = true
             return
         }
         constraintPhotosZeroHeight.priority = UILayoutPriorityDefaultLow
         photosCollectionView.isHidden = false
+        
         photosCollectionView.reloadData()
     }
     
     private func updateAddress() {
-        guard viewModel!.displayAddress else {
+        guard let addressText = viewModel!.addressText else {
             constraintAddressZeroHeight.priority = UILayoutPriorityDefaultHigh
             addressView.isHidden = true
             return
@@ -130,7 +134,7 @@ class PlaceDetailsViewController: UIViewController {
         constraintAddressZeroHeight.priority = UILayoutPriorityDefaultLow
         addressView.isHidden = false
         
-        addressLabel.attributedText = viewModel!.addressText
+        addressLabel.attributedText = addressText
         
         if viewModel!.shouldProccessAddressClicks {
             if addressTapRecognizer == nil {
@@ -147,7 +151,7 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     private func updatePhone() {
-        guard viewModel!.displayPhone else {
+        guard let phoneText = viewModel!.phoneText else {
             constraintPhoneZeroHeight.priority = UILayoutPriorityDefaultHigh
             phoneView.isHidden = true
             return
@@ -155,7 +159,7 @@ class PlaceDetailsViewController: UIViewController {
         constraintPhoneZeroHeight.priority = UILayoutPriorityDefaultLow
         phoneView.isHidden = false
         
-        phoneLabel.attributedText = viewModel!.phoneText
+        phoneLabel.attributedText = phoneText
         
         if viewModel!.shouldProccessPhoneClicks {
             if phoneTapRecognizer == nil {
@@ -172,7 +176,7 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     private func updateWebsite() {
-        guard viewModel!.displayWebsite else {
+        guard let websiteText = viewModel!.websiteText else {
             constraintWebsiteZeroHeight.priority = UILayoutPriorityDefaultHigh
             websiteView.isHidden = true
             return
@@ -180,7 +184,7 @@ class PlaceDetailsViewController: UIViewController {
         constraintWebsiteZeroHeight.priority = UILayoutPriorityDefaultLow
         websiteView.isHidden = false
         
-        websiteLabel.attributedText = viewModel!.websiteText
+        websiteLabel.attributedText = websiteText
         
         if viewModel!.shouldProccessWebsiteClicks {
             if websiteTapRecognizer == nil {
@@ -213,7 +217,7 @@ class PlaceDetailsViewController: UIViewController {
 }
 
 
-// MARK: VM delegate
+// MARK: PlaceDetailsViewModelDelegate
 extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {
     
     func placeDetailsViewModelUpdated(_ viewModel: PlaceDetailsViewModelProtocol) {
@@ -228,8 +232,7 @@ extension PlaceDetailsViewController: PlaceDetailsViewModelDelegate {
 }
 
 
-// MARK: Collection view delegate
-
+// MARK: UICollectionViewDelegateFlowLayout
 extension PlaceDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
@@ -237,8 +240,7 @@ extension PlaceDetailsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-// MARK: Collection view data source
-
+// MARK: UICollectionViewDataSource
 extension PlaceDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel!.photos.count

@@ -34,6 +34,8 @@ class PlaceDetailsPhotoCell: UICollectionViewCell {
     }
 }
 
+
+// MARK: PlacePhotoViewModelDelegate
 extension PlaceDetailsPhotoCell: PlacePhotoViewModelDelegate {
     func placePhotoViewModelImageLoaded(_ viewModel: PlacePhotoViewModelProtocol) {
         // Animate image appearing
