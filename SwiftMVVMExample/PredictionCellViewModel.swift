@@ -16,11 +16,11 @@ class PredictionCellViewModel {
     }
     
     fileprivate var nameFont: UIFont {
-        return UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        return UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
     }
     
-    fileprivate var boldNameFont: UIFont {
-        return UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
+    fileprivate var matchNameColor: UIColor {
+        return UIColor(red: 66/255, green: 133/255, blue: 254/255, alpha: 1)
     }
 }
 
@@ -33,11 +33,11 @@ extension PredictionCellViewModel: PredictionCellViewModelProtocol {
         
         if let matches = prediction.matches, matches.count > 0 {
             // Make matches bold
-            let boldFont = [NSFontAttributeName: boldNameFont]
+            let matchAttributes = [NSForegroundColorAttributeName: matchNameColor]
             
             for match in matches {
                 let range = NSRange(location: match.offset, length: match.length)
-                result.addAttributes(boldFont, range: range)
+                result.addAttributes(matchAttributes, range: range)
             }
         }
         

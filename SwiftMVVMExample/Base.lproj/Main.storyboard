@@ -31,6 +31,44 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aF3-3d-lfO">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="80" id="h2i-ZY-gkg" customClass="PredictionCell" customModule="SwiftMVVMExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h2i-ZY-gkg" id="k2Y-gv-73d">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokyo Skytree" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8G-tj-kRd">
+                                                    <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="establishment, geocode, city" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbL-xu-zvi">
+                                                    <rect key="frame" x="16" y="43" width="343" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SbL-xu-zvi" firstAttribute="top" secondItem="L8G-tj-kRd" secondAttribute="bottom" constant="6" id="2Qj-vw-Sgh"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SbL-xu-zvi" secondAttribute="bottom" constant="16" id="6gA-2Z-b6i"/>
+                                                <constraint firstItem="SbL-xu-zvi" firstAttribute="leading" secondItem="L8G-tj-kRd" secondAttribute="leading" id="Ehy-Hb-740"/>
+                                                <constraint firstItem="L8G-tj-kRd" firstAttribute="top" secondItem="k2Y-gv-73d" secondAttribute="top" constant="16" id="FKj-ZL-dFy"/>
+                                                <constraint firstItem="L8G-tj-kRd" firstAttribute="leading" secondItem="k2Y-gv-73d" secondAttribute="leading" constant="16" id="SX5-fD-brw"/>
+                                                <constraint firstAttribute="trailing" secondItem="L8G-tj-kRd" secondAttribute="trailing" constant="16" id="aqq-XU-d0O"/>
+                                                <constraint firstItem="SbL-xu-zvi" firstAttribute="trailing" secondItem="L8G-tj-kRd" secondAttribute="trailing" id="zyl-l1-4gG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="L8G-tj-kRd" id="1Tr-cV-hIz"/>
+                                            <outlet property="typeLabel" destination="SbL-xu-zvi" id="9Fo-u0-QzH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCO-PI-cdi">
                                 <rect key="frame" x="16" y="124" width="343" height="19.5"/>
@@ -61,6 +99,7 @@
                     <navigationItem key="navigationItem" id="U6H-vG-nbe"/>
                     <connections>
                         <outlet property="activityIndicator" destination="SUH-B0-eCW" id="vPz-pd-oq7"/>
+                        <outlet property="constraintBottom" destination="Ivw-ci-pbn" id="S9r-AO-CpD"/>
                         <outlet property="searchBar" destination="hpE-mZ-S6d" id="vHG-nN-O3F"/>
                         <outlet property="tableView" destination="aF3-3d-lfO" id="jdU-n8-C5D"/>
                         <outlet property="tooltipLabel" destination="WCO-PI-cdi" id="Rp6-cW-fkX"/>

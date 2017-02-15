@@ -15,6 +15,10 @@ class PredictionsViewController: UIViewController {
     @IBOutlet weak var tooltipLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var constraintBottom: NSLayoutConstraint!
+    
+    private let estimatedRowHeight: CGFloat = 74
+    
     fileprivate let cellIdentifier = "cell"
     
     fileprivate let seguePlaceDetails = "placeDetails"
@@ -37,6 +41,8 @@ class PredictionsViewController: UIViewController {
         searchBar.becomeFirstResponder()
         searchBar.placeholder = viewModel?.searchPlaceholderText
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = estimatedRowHeight
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -96,18 +102,15 @@ extension PredictionsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue or create a new cell
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PredictionCell
         
         // Fill cell with data
         if let cellViewModel = viewModel?.cells[indexPath.row] {
-            cell!.textLabel?.attributedText = cellViewModel.name
-            cell!.detailTextLabel?.text = cellViewModel.types
+            cell.nameLabel?.attributedText = cellViewModel.name
+            cell.typeLabel?.text = cellViewModel.types
         }
         
-        return cell!
+        return cell
     }
 }
 
