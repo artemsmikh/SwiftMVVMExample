@@ -95,12 +95,16 @@ class PredictionsViewController: UIViewController {
     }
 }
 
+
+// MARK: UISearchBarDelegate
 extension PredictionsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel?.searchText = searchText
     }
 }
 
+
+// MARK: UITableViewDataSource
 extension PredictionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel != nil ? viewModel!.cells.count : 0
@@ -120,6 +124,8 @@ extension PredictionsViewController: UITableViewDataSource {
     }
 }
 
+
+// MARK: UITableViewDelegate
 extension PredictionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // Hide section header (view model has nothing to do with this)
@@ -137,6 +143,8 @@ extension PredictionsViewController: UITableViewDelegate {
     }
 }
 
+
+// MARK: PredictionSearchViewModelDelegate
 extension PredictionsViewController: PredictionSearchViewModelDelegate {
     func predictionSearchViewModelDidUpdateTooltip(_ viewModel: PredictionSearchViewModelProtocol) {
         updateTooltip()

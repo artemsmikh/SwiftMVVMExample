@@ -8,37 +8,7 @@
 
 import UIKit
 
-class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
-    weak var delegate: PredictionSearchViewModelDelegate?
-    
-    var searchText: String {
-        get {
-            return searchService.searchText
-        }
-        set(newValue) {
-            searchService.searchText = newValue
-        }
-    }
-    
-    var searchPlaceholderText: String {
-        return "Search Google Places"
-    }
-    
-    var displayLoadingIndicator: Bool = false {
-        didSet {
-            delegate?.predictionSearchViewModelDidUpdateLoadingIndicator(self)
-        }
-    }
-    var displayTooltip: Bool = false
-    var displayTable: Bool = false
-    var tooltipText: String = ""
-    
-    var cells: [PredictionCellViewModelProtocol] = [] {
-        didSet {
-            displayTable = cells.count > 0
-            delegate?.predictionSearchViewModelDidUpdatePredictions(self)
-        }
-    }
+final class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     
     fileprivate var searchService: PredictionSearchServiceProtocol
     
@@ -48,6 +18,41 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
         
         if searchTextIsEmpty() {
             showEmptySearchTextTooltip()
+        }
+    }
+    
+
+    // MARK: Protocol properties
+    
+    weak var delegate: PredictionSearchViewModelDelegate?
+    
+    var searchText: String {
+        get {
+            return searchService.searchText
+        }
+        set(newValue) {
+            searchService.searchText = newValue
+        }
+    }    
+
+    
+    var searchPlaceholderText: String {
+        return "Search Google Places"
+    }
+    var tooltipText: String = ""
+    
+    var displayTooltip: Bool = false
+    var displayTable: Bool = false
+    var displayLoadingIndicator: Bool = false {
+        didSet {
+            delegate?.predictionSearchViewModelDidUpdateLoadingIndicator(self)
+        }
+    }
+    
+    var cells: [PredictionCellViewModelProtocol] = [] {
+        didSet {
+            displayTable = cells.count > 0
+            delegate?.predictionSearchViewModelDidUpdatePredictions(self)
         }
     }
     
@@ -72,8 +77,7 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     }
     
     
-    // MARK: Actions from delegate
-    
+    // MARK: Protocol functions
     func onSelectCell(withIndex index: Int) {
         let model = searchService.predictions[index]
         let placeId = model.placeId
@@ -87,6 +91,8 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     }
 }
 
+
+// MARK: PredictionSearchServiceDelegate
 extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
     func predictionSearchServiceDidUpdatePredictions(_ service: PredictionSearchServiceProtocol) {
         var updatedCells: [PredictionCellViewModelProtocol] = []
