@@ -20,6 +20,8 @@ protocol PlaceDetailsViewModelProtocol {
     
     var showContentView: Bool { get }
     var nameText: String? { get }
+    
+    var displayRating: Bool { get }
     var ratingText: String? { get }
     
     var shouldProccessAddressClicks: Bool { get }

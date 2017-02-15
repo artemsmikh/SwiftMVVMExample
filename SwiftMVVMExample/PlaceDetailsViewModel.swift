@@ -89,6 +89,10 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     
     fileprivate(set) var showContentView: Bool = false
     fileprivate(set) var nameText: String?
+    
+    var displayRating: Bool {
+        return ratingText != nil
+    }
     fileprivate(set) var ratingText: String?
     
     var shouldProccessAddressClicks: Bool {
@@ -146,7 +150,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
         if let rating = self.model?.rating, rating > 0 {
             self.ratingText = "Rating: \(rating)"
         } else {
-            self.ratingText = "No rating"
+            self.ratingText = nil
         }
     }
     

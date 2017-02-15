@@ -32,6 +32,7 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var constraintPhoneZeroHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintWebsiteZeroHeight: NSLayoutConstraint!
     @IBOutlet weak var constraintAddressZeroHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintRatingBottom: NSLayoutConstraint!
     
     private var addressTapRecognizer: UITapGestureRecognizer?
     private var phoneTapRecognizer: UITapGestureRecognizer?
@@ -71,8 +72,8 @@ class PlaceDetailsViewController: UIViewController {
         contentView.isHidden = !viewModel!.showContentView
         
         nameLabel.text = viewModel!.nameText
-        ratingLabel.text = viewModel!.ratingText
         
+        updateRating()
         updatePhotos()
         updateAddress()
         updatePhone()
@@ -96,6 +97,17 @@ class PlaceDetailsViewController: UIViewController {
                 self.iconImageView.addGestureRecognizer(iconTapRecognizer!)
             }
         }
+    }
+    
+    private func updateRating() {
+        guard viewModel!.displayRating else {
+            constraintRatingBottom.priority = UILayoutPriorityDefaultLow
+            ratingLabel.isHidden = true
+            return
+        }
+        constraintRatingBottom.priority = UILayoutPriorityDefaultHigh
+        ratingLabel.isHidden = false
+        ratingLabel.text = viewModel!.ratingText
     }
     
     private func updatePhotos() {
