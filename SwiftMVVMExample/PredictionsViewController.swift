@@ -54,11 +54,17 @@ class PredictionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardToggleNotification(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardToggleNotification(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,6 +126,11 @@ extension PredictionsViewController: UITableViewDelegate {
         return CGFloat.leastNonzeroMagnitude
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Hide section footer
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Tell the ViewModel that prediction is selected
         self.viewModel?.onSelectCell(withIndex: indexPath.row)
@@ -144,5 +155,45 @@ extension PredictionsViewController: PredictionSearchViewModelDelegate {
     
     func predictionSearchViewModelDidUpdateLoadingIndicator(_ viewModel: PredictionSearchViewModelProtocol) {
         updateLoadingIndicator()
+    }
+}
+
+
+// MARK: Keyboard events handling
+extension PredictionsViewController {
+    func onKeyboardToggleNotification(_ notification: Notification) {
+        guard let info = notification.userInfo else {
+            return
+        }
+        
+        guard let duration = info[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            return
+        }
+        
+        // Animate something depends on a new keyboard position
+        UIView.animate(withDuration: duration) {
+            if notification.name == .UIKeyboardWillShow {
+                // Keyboard will show
+                // Get keyboard height
+                guard let frame = info[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
+                    return
+                }
+                self.keyboardWillAppear(with: frame.size)
+            } else {
+                // .UIKeyboardWillHide
+                self.keyboardWillHide()
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    // The method will be called within a UIView.animateWithDuration closure
+    func keyboardWillAppear(with size: CGSize) {
+        constraintBottom.constant = size.height
+    }
+    
+    // The method will be called within a UIView.animateWithDuration closure
+    func keyboardWillHide() {
+        constraintBottom.constant = 0
     }
 }
