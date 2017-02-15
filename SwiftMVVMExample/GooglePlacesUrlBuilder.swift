@@ -20,7 +20,7 @@ final class GooglePlacesUrlBuilder {
     }
     
     static func buildPhotoUrl(_ config: GooglePlacesConfig, reference: String) -> (url: String, error: Error?) {
-        return buildUrl(from: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=\(config.maxImageSize)&photoreference=\(reference)&key=\(config.apiKey))")
+        return buildUrl(from: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=\(config.maxImageSize)&photoreference=\(reference)&key=\(config.apiKey)")
     }
     
     
