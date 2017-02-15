@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PredictionModel {
+final class PredictionModel {
     var predictionId: String
     var placeId: String
     var placeDescription: String

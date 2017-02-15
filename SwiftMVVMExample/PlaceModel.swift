@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlaceModel {
+final class PlaceModel {
     var placeId: String
     var name: String
     var rating: Float?

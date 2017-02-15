@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class GooglePlacesAPIResponseParser {
+final class GooglePlacesAPIResponseParser {
     
     static func parseResponse(_ response: Alamofire.DataResponse<Any>) -> (json: [String: Any]?, error: Error?) {
         if let error = response.error {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaceDetailsPhotoCell: UICollectionViewCell {
+final class PlaceDetailsPhotoCell: UICollectionViewCell {
     let fadeAnimationDuration: TimeInterval = 0.3
     
     @IBOutlet weak var imageView: UIImageView!

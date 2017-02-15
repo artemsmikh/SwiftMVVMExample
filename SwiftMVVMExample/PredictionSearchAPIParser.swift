@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PredictionSearchAPIParser {
+final class PredictionSearchAPIParser {
     static func parseResponse(_ response: [String: Any]) -> (result: [PredictionModel], error: Error?) {
         // Check that response has a "predictions" key
         guard let predictionsInfo = response["predictions"] as? [Any] else {

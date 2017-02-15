@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class PredictionSearchAPIService: PredictionSearchServiceProtocol {
+final class PredictionSearchAPIService: PredictionSearchServiceProtocol {
     let minimalSearchTextLength = 1
     let minimumTimeIntervalBetweenRequests: TimeInterval = 0.5
     

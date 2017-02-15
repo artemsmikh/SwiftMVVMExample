@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SwiftMVVMExampleUITests: XCTestCase {
+final class SwiftMVVMExampleUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PredictionsViewController: UIViewController {
+final class PredictionsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!

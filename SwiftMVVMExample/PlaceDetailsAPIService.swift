@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
+final class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
     
     weak var delegate: PlaceDetailsServiceDelegate?
     

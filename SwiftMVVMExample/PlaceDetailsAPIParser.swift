@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlaceDetailsAPIParser {
+final class PlaceDetailsAPIParser {
     
     static func parsePlaceDetailsResponse(from response: [String: Any], config: GooglePlacesConfig) -> (result: PlaceModel?, error: Error?) {
         // Check that json has a "result" key

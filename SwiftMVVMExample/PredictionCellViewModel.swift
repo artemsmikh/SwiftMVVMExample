@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PredictionCellViewModel {
+final class PredictionCellViewModel {
     fileprivate var prediction: PredictionModel
     
     init(withPrediction prediction: PredictionModel) {

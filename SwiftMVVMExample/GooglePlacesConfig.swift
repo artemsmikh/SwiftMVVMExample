@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GooglePlacesConfig {
+final class GooglePlacesConfig {
     let maxImageSize: Int = 600
     
     private(set) var apiKey: String = ""

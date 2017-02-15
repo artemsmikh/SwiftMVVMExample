@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlacePhotoViewModel: PlacePhotoViewModelProtocol {
+final class PlacePhotoViewModel: PlacePhotoViewModelProtocol {
     weak var delegate: PlacePhotoViewModelDelegate?
     
     private(set) var photoUrl: URL

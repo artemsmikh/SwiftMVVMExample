@@ -8,7 +8,7 @@
 
 import XCTest
 
-class PredictionSearchAPIParserTest: XCTestCase {
+final class PredictionSearchAPIParserTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
