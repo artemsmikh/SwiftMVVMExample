@@ -40,12 +40,17 @@ final class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
     }
     
     private func createRequest(completionHandler: @escaping (_ result: PlaceModel?, _ error: Error?) -> Void) {
-        let url = prepareRequestUrl()
-        let parameters = prepareRequestParameters()
+        // Build request url
+        let (url, urlError) = GooglePlacesUrlBuilder.buildPlaceDetailsUrl(config, placeId: placeId)
         
-        currentRequest = Alamofire.request(url, parameters: parameters).responseJSON { response in
+        guard urlError == nil else {
+            completionHandler(nil, urlError)
+            return
+        }
+        
+        currentRequest = Alamofire.request(url).responseJSON { response in
             // Parse network response in the default way for Google API
-            let responseParseResult = GooglePlacesAPIResponseParser.parseResponse(response)
+            let responseParseResult = GooglePlacesResponseParser.parseResponse(response)
             
             if let error = responseParseResult.error {
                 completionHandler(nil, error)
@@ -63,13 +68,4 @@ final class PlaceDetailsAPIService: PlaceDetailsServiceProtocol {
             completionHandler(placeDetailsParseResult.result!, nil)
         }
     }
-    
-    private func prepareRequestUrl() -> String {
-        return "https://maps.googleapis.com/maps/api/place/details/json"
-    }
-    
-    private func prepareRequestParameters() -> Parameters {
-        return ["placeid": placeId, "key": config.apiKey]
-    }
-
 }

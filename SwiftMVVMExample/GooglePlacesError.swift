@@ -1,5 +1,5 @@
 //
-//  GooglePlacesAPIResponseError.swift
+//  GooglePlacesError.swift
 //  SwiftMVVMExample
 //
 //  Created by Artem Mikhailov on 08/02/17.
@@ -8,13 +8,14 @@
 
 import Foundation
 
-enum GooglePlacesAPIResponseError: Error {
+enum GooglePlacesError: Error {
     case InvalidResponse
     case WrongResponseFormat
     case IncorrectResponseStatus
+    case IncorrectInput
 }
 
-extension GooglePlacesAPIResponseError: CustomStringConvertible {
+extension GooglePlacesError: CustomStringConvertible {
     var description: String {
         switch self {
         case .InvalidResponse:
@@ -25,6 +26,9 @@ extension GooglePlacesAPIResponseError: CustomStringConvertible {
             
         case .IncorrectResponseStatus:
             return "Incorrect response status"
+            
+        case .IncorrectInput:
+            return "Incorrect input"
         }
     }
 }

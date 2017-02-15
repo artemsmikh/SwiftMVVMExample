@@ -27,10 +27,11 @@
 		AC657B471E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example in Resources */ = {isa = PBXBuildFile; fileRef = AC657B461E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example */; };
 		AC657B551E4BB0D000C84B60 /* PlaceDetailsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B541E4BB0D000C84B60 /* PlaceDetailsServiceProtocol.swift */; };
 		AC657B571E4BB25200C84B60 /* PlaceDetailsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B561E4BB25200C84B60 /* PlaceDetailsAPIService.swift */; };
-		AC657B5A1E4BB6B500C84B60 /* GooglePlacesAPIResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B591E4BB6B500C84B60 /* GooglePlacesAPIResponseParser.swift */; };
-		AC657B5C1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B5B1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift */; };
+		AC657B5A1E4BB6B500C84B60 /* GooglePlacesResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B591E4BB6B500C84B60 /* GooglePlacesResponseParser.swift */; };
+		AC657B5C1E4BB70A00C84B60 /* GooglePlacesError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B5B1E4BB70A00C84B60 /* GooglePlacesError.swift */; };
 		AC657B5E1E4BBD3200C84B60 /* PlaceDetailsAPIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC657B5D1E4BBD3100C84B60 /* PlaceDetailsAPIParser.swift */; };
 		ACBED5F51E54B56B00E1BBA3 /* PredictionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBED5F41E54B56B00E1BBA3 /* PredictionCell.swift */; };
+		ACBED5FA1E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBED5F91E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift */; };
 		ACD25DF41E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DF81E47AAD200F3E3AB /* PredictionSearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */; };
 		ACD25DFA1E47AAD600F3E3AB /* PredictionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4610CF1E43C9560059D5CD /* PredictionModel.swift */; };
@@ -82,10 +83,11 @@
 		AC657B461E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GooglePlacesConfig.plist.example; sourceTree = "<group>"; };
 		AC657B541E4BB0D000C84B60 /* PlaceDetailsServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsServiceProtocol.swift; sourceTree = "<group>"; };
 		AC657B561E4BB25200C84B60 /* PlaceDetailsAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlaceDetailsAPIService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		AC657B591E4BB6B500C84B60 /* GooglePlacesAPIResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIResponseParser.swift; sourceTree = "<group>"; };
-		AC657B5B1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIResponseError.swift; sourceTree = "<group>"; };
+		AC657B591E4BB6B500C84B60 /* GooglePlacesResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesResponseParser.swift; sourceTree = "<group>"; };
+		AC657B5B1E4BB70A00C84B60 /* GooglePlacesError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesError.swift; sourceTree = "<group>"; };
 		AC657B5D1E4BBD3100C84B60 /* PlaceDetailsAPIParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsAPIParser.swift; sourceTree = "<group>"; };
 		ACBED5F41E54B56B00E1BBA3 /* PredictionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionCell.swift; sourceTree = "<group>"; };
+		ACBED5F91E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesUrlBuilder.swift; sourceTree = "<group>"; };
 		ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchServiceProtocol.swift; sourceTree = "<group>"; };
 		ACD25DFE1E47C2F400F3E3AB /* PredictionSearchAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIService.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,8 +254,9 @@
 			isa = PBXGroup;
 			children = (
 				AC657B281E48E48000C84B60 /* Config */,
-				AC657B591E4BB6B500C84B60 /* GooglePlacesAPIResponseParser.swift */,
-				AC657B5B1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift */,
+				AC657B591E4BB6B500C84B60 /* GooglePlacesResponseParser.swift */,
+				AC657B5B1E4BB70A00C84B60 /* GooglePlacesError.swift */,
+				ACBED5F91E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift */,
 			);
 			name = "Google Places API";
 			sourceTree = "<group>";
@@ -532,9 +535,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC3699C61E53A99F0071EBD6 /* PlaceDetailsPhotoCell.swift in Sources */,
-				AC657B5C1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift in Sources */,
+				AC657B5C1E4BB70A00C84B60 /* GooglePlacesError.swift in Sources */,
 				AC657B5E1E4BBD3200C84B60 /* PlaceDetailsAPIParser.swift in Sources */,
-				AC657B5A1E4BB6B500C84B60 /* GooglePlacesAPIResponseParser.swift in Sources */,
+				AC657B5A1E4BB6B500C84B60 /* GooglePlacesResponseParser.swift in Sources */,
+				ACBED5FA1E54D51000E1BBA3 /* GooglePlacesUrlBuilder.swift in Sources */,
 				ACFEEF871E3FDAA00091680B /* PredictionsViewController.swift in Sources */,
 				AC657B421E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift in Sources */,
 				AC4610D21E43D0980059D5CD /* PlaceModel.swift in Sources */,

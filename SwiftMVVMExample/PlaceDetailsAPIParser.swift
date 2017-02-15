@@ -13,12 +13,12 @@ final class PlaceDetailsAPIParser {
     static func parsePlaceDetailsResponse(from response: [String: Any], config: GooglePlacesConfig) -> (result: PlaceModel?, error: Error?) {
         // Check that json has a "result" key
         guard let info = response["result"] as? [String: Any] else {
-            return (nil, GooglePlacesAPIResponseError.WrongResponseFormat)
+            return (nil, GooglePlacesError.WrongResponseFormat)
         }
         
         // Parse place details
         guard let placeDetails = parsePlaceDetails(from: info, config: config) else {
-            return (nil, GooglePlacesAPIResponseError.WrongResponseFormat)
+            return (nil, GooglePlacesError.WrongResponseFormat)
         }
         
         // Return parsed place
@@ -70,9 +70,12 @@ final class PlaceDetailsAPIParser {
     }
     
     private static func urlFromPhotoReference(_ reference: String, config: GooglePlacesConfig) -> URL? {
-        if let urlString = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=\(config.maxImageSize)&photoreference=\(reference)&key=\(config.apiKey)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            return URL(string: urlString)
+        let (url, urlError) = GooglePlacesUrlBuilder.buildPhotoUrl(config, reference: reference)
+        
+        guard urlError == nil else {
+            return nil
         }
-        return nil
+        
+        return URL(string: url)
     }
 }
