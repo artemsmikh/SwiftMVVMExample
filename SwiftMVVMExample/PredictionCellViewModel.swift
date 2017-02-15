@@ -16,10 +16,14 @@ class PredictionCellViewModel {
     }
     
     fileprivate var nameFont: UIFont {
+        return UIFont.systemFont(ofSize: UIFont.labelFontSize)
+    }
+    
+    fileprivate var matchedNameFont: UIFont {
         return UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
     }
     
-    fileprivate var matchNameColor: UIColor {
+    fileprivate var matchedNameColor: UIColor {
         return UIColor(red: 66/255, green: 133/255, blue: 254/255, alpha: 1)
     }
 }
@@ -33,7 +37,8 @@ extension PredictionCellViewModel: PredictionCellViewModelProtocol {
         
         if let matches = prediction.matches, matches.count > 0 {
             // Make matches bold
-            let matchAttributes = [NSForegroundColorAttributeName: matchNameColor]
+            let matchAttributes = [NSForegroundColorAttributeName: matchedNameColor,
+                                   NSFontAttributeName: matchedNameFont]
             
             for match in matches {
                 let range = NSRange(location: match.offset, length: match.length)
@@ -49,7 +54,9 @@ extension PredictionCellViewModel: PredictionCellViewModelProtocol {
         var result = ""
         if let types = prediction.types, types.count > 0 {
             for type in types {
-                result += type
+                // Replace underscores with spaces 
+                // (e.g. 'transit_station' becomes 'transit station')
+                result += type.replacingOccurrences(of: "_", with: " ")
                 if type != types.last! {
                     result += ", "
                 }

@@ -41,23 +41,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokyo Skytree" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8G-tj-kRd">
-                                                    <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="12" width="343" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="establishment, geocode, city" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbL-xu-zvi">
-                                                    <rect key="frame" x="16" y="43" width="343" height="17"/>
+                                                    <rect key="frame" x="16" y="39" width="343" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="SbL-xu-zvi" firstAttribute="top" secondItem="L8G-tj-kRd" secondAttribute="bottom" constant="6" id="2Qj-vw-Sgh"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SbL-xu-zvi" secondAttribute="bottom" constant="16" id="6gA-2Z-b6i"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SbL-xu-zvi" secondAttribute="bottom" constant="12" id="6gA-2Z-b6i"/>
                                                 <constraint firstItem="SbL-xu-zvi" firstAttribute="leading" secondItem="L8G-tj-kRd" secondAttribute="leading" id="Ehy-Hb-740"/>
-                                                <constraint firstItem="L8G-tj-kRd" firstAttribute="top" secondItem="k2Y-gv-73d" secondAttribute="top" constant="16" id="FKj-ZL-dFy"/>
+                                                <constraint firstItem="L8G-tj-kRd" firstAttribute="top" secondItem="k2Y-gv-73d" secondAttribute="top" constant="12" id="FKj-ZL-dFy"/>
                                                 <constraint firstItem="L8G-tj-kRd" firstAttribute="leading" secondItem="k2Y-gv-73d" secondAttribute="leading" constant="16" id="SX5-fD-brw"/>
                                                 <constraint firstAttribute="trailing" secondItem="L8G-tj-kRd" secondAttribute="trailing" constant="16" id="aqq-XU-d0O"/>
                                                 <constraint firstItem="SbL-xu-zvi" firstAttribute="trailing" secondItem="L8G-tj-kRd" secondAttribute="trailing" id="zyl-l1-4gG"/>
