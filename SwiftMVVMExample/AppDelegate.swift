@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if let navigationController = self.window?.rootViewController as? UINavigationController {
+        if let navigationController = window?.rootViewController as? UINavigationController {
             if let predictionsController = navigationController.viewControllers.first as? PredictionsViewController {
                 let searchService = PredictionSearchAPIService(withConfig: googlePlacesConfig)
                 let searchViewModel = PredictionSearchViewModel(withSearchService: searchService)

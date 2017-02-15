@@ -62,7 +62,7 @@ class PlaceDetailsViewController: UIViewController {
     // MARK: Updating UI
     
     fileprivate func updateView() {
-        self.title = viewModel!.titleText
+        title = viewModel!.titleText
         
         activityIndicator.isHidden = !viewModel!.showLoadingIndicator
         
@@ -82,19 +82,19 @@ class PlaceDetailsViewController: UIViewController {
         let showIconActivityIndicator = viewModel!.showIcon && viewModel!.icon == nil
         let showIcon = viewModel!.showIcon && viewModel!.icon != nil
         
-        self.iconActivityIndicator.isHidden = !showIconActivityIndicator
-        self.iconImageView.isHidden = !showIcon
-        self.iconBackgroundView.isHidden = self.iconImageView.isHidden
+        iconActivityIndicator.isHidden = !showIconActivityIndicator
+        iconImageView.isHidden = !showIcon
+        iconBackgroundView.isHidden = iconImageView.isHidden
         // Round icon background corners
-        self.iconBackgroundView.layer.cornerRadius = iconBackgroundCornerRadius
+        iconBackgroundView.layer.cornerRadius = iconBackgroundCornerRadius
         
         if showIcon {
-            self.iconImageView.image = viewModel!.icon
+            iconImageView.image = viewModel!.icon
             
             // Add tap gesture recognizer to icon (show map on click)
             if iconTapRecognizer == nil {
                 iconTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAddressClicked(_:)))
-                self.iconImageView.addGestureRecognizer(iconTapRecognizer!)
+                iconImageView.addGestureRecognizer(iconTapRecognizer!)
             }
         }
     }
@@ -134,7 +134,7 @@ class PlaceDetailsViewController: UIViewController {
         
         if viewModel!.shouldProccessAddressClicks {
             if addressTapRecognizer == nil {
-                addressTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onAddressClicked(_:)))
+                addressTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAddressClicked(_:)))
                 addressLabel.addGestureRecognizer(addressTapRecognizer!)
                 addressLabel.isUserInteractionEnabled = true
             }
@@ -159,7 +159,7 @@ class PlaceDetailsViewController: UIViewController {
         
         if viewModel!.shouldProccessPhoneClicks {
             if phoneTapRecognizer == nil {
-                phoneTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onPhoneClicked(_:)))
+                phoneTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onPhoneClicked(_:)))
                 phoneLabel.addGestureRecognizer(phoneTapRecognizer!)
                 phoneLabel.isUserInteractionEnabled = true
             }
@@ -184,7 +184,7 @@ class PlaceDetailsViewController: UIViewController {
         
         if viewModel!.shouldProccessWebsiteClicks {
             if websiteTapRecognizer == nil {
-                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onWebsiteClicked(_:)))
+                websiteTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(onWebsiteClicked(_:)))
                 websiteLabel.addGestureRecognizer(websiteTapRecognizer!)
                 websiteLabel.isUserInteractionEnabled = true
             }
@@ -247,7 +247,7 @@ extension PlaceDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PlaceDetailsPhotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PlaceDetailsPhotoCell
         
-        var photoViewModel = self.viewModel!.photos[indexPath.row]
+        var photoViewModel = viewModel!.photos[indexPath.row]
         photoViewModel.delegate = nil
         cell.configure(&photoViewModel)
         

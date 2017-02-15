@@ -51,13 +51,13 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     
     func loadDetails() {
         // Show loading indicator and hide the other components
-        self.showLoadingIndicator = true
-        self.showError = false
-        self.showContentView = false
+        showLoadingIndicator = true
+        showError = false
+        showContentView = false
         
         delegate?.placeDetailsViewModelUpdated(self)
         
-        self.service.loadDetails()
+        service.loadDetails()
     }
     
     func onPhoneClicked() {
@@ -132,7 +132,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     // MARK: Update model
     
     private func updateViewModel() {
-        guard let model = self.model else {
+        guard let model = model else {
             return
         }
         
@@ -147,45 +147,45 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
     }
     
     private func updateRating() {
-        if let rating = self.model?.rating, rating > 0 {
-            self.ratingText = "Rating: \(rating)"
+        if let rating = model?.rating, rating > 0 {
+            ratingText = "Rating: \(rating)"
         } else {
-            self.ratingText = nil
+            ratingText = nil
         }
     }
     
     private func updateAddress() {
         if let address = model?.address {
             let attributes = model?.url != nil ? clickablePropertyAttributes() : propertyAttributes()
-            self.addressText = NSAttributedString(string: address, attributes: attributes)
+            addressText = NSAttributedString(string: address, attributes: attributes)
         } else {
             if model?.url != nil {
-                self.addressText = NSAttributedString(string: "Click to open address on the map", attributes: propertyAttributes())
+                addressText = NSAttributedString(string: "Click to open address on the map", attributes: propertyAttributes())
             } else {
-                self.addressText = nil
+                addressText = nil
             }
         }
     }
     
     private func updatePhone() {
         if let phone = model?.phone {
-            self.phoneText = NSAttributedString(string: phone, attributes: clickablePropertyAttributes())
+            phoneText = NSAttributedString(string: phone, attributes: clickablePropertyAttributes())
         } else {
-            self.phoneText = nil
+            phoneText = nil
         }
     }
     
     private func updateWebsite() {
         if let url = model?.website {
-            self.websiteText = NSAttributedString(string: url.absoluteString,  attributes: clickablePropertyAttributes())
+            websiteText = NSAttributedString(string: url.absoluteString,  attributes: clickablePropertyAttributes())
         } else {
-            self.websiteText = nil
+            websiteText = nil
         }
     }
     
     private func updateIcon() {
         if let url = model?.icon {
-            self.showIcon = true
+            showIcon = true
             URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                 guard let data = data, error == nil else {
                     return
@@ -199,7 +199,7 @@ class PlaceDetailsViewModel: PlaceDetailsViewModelProtocol {
                 }
             }).resume()
         } else {
-            self.showIcon = false
+            showIcon = false
         }
     }
     
@@ -229,22 +229,22 @@ extension PlaceDetailsViewModel: PlaceDetailsServiceDelegate {
             showContent = true
             self.model = model
         } else {
-            self.errorText = self.defaultError
+            errorText = defaultError
         }
         
-        self.showError = !showContent
-        self.showLoadingIndicator = !showContent
-        self.showContentView = showContent
+        showError = !showContent
+        showLoadingIndicator = !showContent
+        showContentView = showContent
         
         delegate?.placeDetailsViewModelUpdated(self)
     }
     
     func placeDetailsService(_ service: PlaceDetailsServiceProtocol, didFailToUpdate error: Error) {
         // Show error and hide the other components
-        self.errorText = self.defaultError
-        self.showError = true
-        self.showLoadingIndicator = false
-        self.showContentView = false
+        errorText = defaultError
+        showError = true
+        showLoadingIndicator = false
+        showContentView = false
         
         delegate?.placeDetailsViewModelUpdated(self)
     }

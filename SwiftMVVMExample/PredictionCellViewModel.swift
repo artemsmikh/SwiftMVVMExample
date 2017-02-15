@@ -31,7 +31,7 @@ class PredictionCellViewModel {
 extension PredictionCellViewModel: PredictionCellViewModelProtocol {
     var name: NSAttributedString {
         // Attributed string with a place desription, matches marked in bold
-        let name = self.prediction.placeDescription
+        let name = prediction.placeDescription
         let font = [NSFontAttributeName: nameFont]
         let result = NSMutableAttributedString(string: name, attributes: font)
         

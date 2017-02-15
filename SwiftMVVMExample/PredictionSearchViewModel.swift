@@ -75,7 +75,7 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
     // MARK: Actions from delegate
     
     func onSelectCell(withIndex index: Int) {
-        let model = self.searchService.predictions[index]
+        let model = searchService.predictions[index]
         let placeId = model.placeId
         
         // Create a ViewModel for passing to place details screen
@@ -83,7 +83,7 @@ class PredictionSearchViewModel: PredictionSearchViewModelProtocol {
         let placeDetailsViewModel = appDelegate.preparePlaceDetailsViewModel(forPlaceId: placeId)
         
         // Tell delegate to show place details with the created VM
-        self.delegate?.predictionSearchViewModel(self, showPlaceDetails: placeDetailsViewModel)
+        delegate?.predictionSearchViewModel(self, showPlaceDetails: placeDetailsViewModel)
     }
 }
 
@@ -93,11 +93,11 @@ extension PredictionSearchViewModel: PredictionSearchServiceDelegate {
         for prediction in searchService.predictions {
             updatedCells.append(PredictionCellViewModel(withPrediction: prediction))
         }
-        self.cells = updatedCells
+        cells = updatedCells
     }
     
     func predictionSearchService(_ service: PredictionSearchServiceProtocol, didFailToUpdatePredictions error: Error) {
-        self.cells = []
+        cells = []
     }
     
     func predictionSearchServiceDidUpdateStatus(_ service: PredictionSearchServiceProtocol) {

@@ -64,11 +64,11 @@
 
 /* Begin PBXFileReference section */
 		AC36999E1E4F8A4F0071EBD6 /* PlaceDetailsViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewModelProtocol.swift; sourceTree = "<group>"; };
-		AC3699A31E4F9C8E0071EBD6 /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
-		AC3699A51E4FB2350071EBD6 /* PlaceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewModel.swift; sourceTree = "<group>"; };
+		AC3699A31E4F9C8E0071EBD6 /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		AC3699A51E4FB2350071EBD6 /* PlaceDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlaceDetailsViewModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AC3699C01E53A3C10071EBD6 /* PlacePhotoViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePhotoViewModelProtocol.swift; sourceTree = "<group>"; };
 		AC3699C21E53A49E0071EBD6 /* PlacePhotoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePhotoViewModel.swift; sourceTree = "<group>"; };
-		AC3699C51E53A99F0071EBD6 /* PlaceDetailsPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsPhotoCell.swift; sourceTree = "<group>"; };
+		AC3699C51E53A99F0071EBD6 /* PlaceDetailsPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlaceDetailsPhotoCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AC4610CF1E43C9560059D5CD /* PredictionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionModel.swift; sourceTree = "<group>"; };
 		AC4610D11E43D0980059D5CD /* PlaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		AC657B2A1E48E52A00C84B60 /* GooglePlacesConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GooglePlacesConfig.plist; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		AC657B411E4A3E6100C84B60 /* PredictionSearchViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchViewModelProtocol.swift; sourceTree = "<group>"; };
 		AC657B461E4A5D5D00C84B60 /* GooglePlacesConfig.plist.example */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GooglePlacesConfig.plist.example; sourceTree = "<group>"; };
 		AC657B541E4BB0D000C84B60 /* PlaceDetailsServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsServiceProtocol.swift; sourceTree = "<group>"; };
-		AC657B561E4BB25200C84B60 /* PlaceDetailsAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsAPIService.swift; sourceTree = "<group>"; };
+		AC657B561E4BB25200C84B60 /* PlaceDetailsAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PlaceDetailsAPIService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AC657B591E4BB6B500C84B60 /* GooglePlacesAPIResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIResponseParser.swift; sourceTree = "<group>"; };
 		AC657B5B1E4BB70A00C84B60 /* GooglePlacesAPIResponseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAPIResponseError.swift; sourceTree = "<group>"; };
 		AC657B5D1E4BBD3100C84B60 /* PlaceDetailsAPIParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsAPIParser.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		ACD25DF31E478B4E00F3E3AB /* PredictionSearchServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchServiceProtocol.swift; sourceTree = "<group>"; };
 		ACD25DFE1E47C2F400F3E3AB /* PredictionSearchAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionSearchAPIService.swift; sourceTree = "<group>"; };
 		ACFEEF811E3FDAA00091680B /* SwiftMVVMExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMVVMExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACFEEF841E3FDAA00091680B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ACFEEF841E3FDAA00091680B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		ACFEEF861E3FDAA00091680B /* PredictionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionsViewController.swift; sourceTree = "<group>"; };
 		ACFEEF891E3FDAA00091680B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACFEEF8B1E3FDAA00091680B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
