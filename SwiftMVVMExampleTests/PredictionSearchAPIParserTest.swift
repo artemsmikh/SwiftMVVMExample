@@ -28,14 +28,7 @@ final class PredictionSearchAPIParserTest: XCTestCase {
         json = [:]
         results = PredictionSearchAPIParser.parseResponse(json)
         XCTAssertNotNil(results.error)
-        XCTAssertEqual(results.result.count, 0)
-        
-        // Response without 'status' field
-        // TODO: Write tests for GooglePlacesResponseParser
-//        json = ["predictions": []]
-//        results = PredictionSearchAPIParser.parseResponse(json)
-//        XCTAssertNotNil(results.error)
-//        XCTAssertEqual(results.result.count, 0)
+        XCTAssertEqual(results.result.count, 0)        
         
         // Response without 'predictions' field
         json = ["status": "OK"]
@@ -47,24 +40,7 @@ final class PredictionSearchAPIParserTest: XCTestCase {
     func testResponseStatus() {
         var json: [String: Any]
         var results: (result: [PredictionModel], error: Error?)
-        
-        // TODO: Write tests for GooglePlacesResponseParser
-        // Response with wrong statuses
-//        json = ["status": "REQUEST_DENIED", "predictions": []]
-//        results = PredictionSearchAPIParser.parseResponse(json)
-//        XCTAssertNotNil(results.error)
-//        XCTAssertEqual(results.result.count, 0)
-//        
-//        json = ["status": "INVALID_REQUEST", "predictions": []]
-//        results = PredictionSearchAPIParser.parseResponse(json)
-//        XCTAssertNotNil(results.error)
-//        XCTAssertEqual(results.result.count, 0)
-//        
-//        json = ["status": "OVER_QUERY_LIMIT", "predictions": []]
-//        results = PredictionSearchAPIParser.parseResponse(json)
-//        XCTAssertNotNil(results.error)
-//        XCTAssertEqual(results.result.count, 0)
-        
+                
         // Response with correct statuses
         json = ["status": "OK", "predictions": []]
         results = PredictionSearchAPIParser.parseResponse(json)
